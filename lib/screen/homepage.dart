@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           width: 170,
                           height: 70,
                           color: Colors.transparent,
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               'Link App.',
                               style: TextStyle(
