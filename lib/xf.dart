@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'constants.dart';
 import 'widgets/dropdown_button/dropbutton.dart';
 import 'widgets/textfield/textfield.dart';
 
@@ -16,6 +17,7 @@ class _XfState extends State<Xf> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MyCustomarColors.opicswallowBlue,
       body: Container(
         decoration: xfboxdecoration(),
         width: 330,
@@ -51,11 +53,11 @@ class _XfState extends State<Xf> {
 
   BoxDecoration xfboxdecoration() {
     return const BoxDecoration(
-          color: Colors.white10,
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10.0),
-              bottomLeft: Radius.circular(10.0),
-              bottomRight: Radius.circular(10.0),
-              topRight: Radius.circular(10.0)));
+        color: Colors.white10,
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10.0),
+            bottomLeft: Radius.circular(10.0),
+            bottomRight: Radius.circular(10.0),
+            topRight: Radius.circular(10.0)));
   }
 }

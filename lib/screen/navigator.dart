@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
 import 'homepage.dart';
+import 'load_page.dart';
+import 'profil.dart';
 
 var _selectedIndex = 0;
 var padding = 8.0;
@@ -97,13 +99,9 @@ class _NavigatorBarState extends State<NavigatorBar> {
       case 0:
         return const MyHomePage(); //MyHomePage();
       case 1:
-        return Container(
-          color: MyCustomarColors.orange,
-        ); //SavePage();
+        return const LoadingPage(); //SavePage();
       case 2:
-        return Container(
-          color: MyCustomarColors.crystalBell,
-        ); //Profil();
+        return const Profil(); //Profil();
     }
   }
 }

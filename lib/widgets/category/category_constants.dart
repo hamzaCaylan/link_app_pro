@@ -6,7 +6,6 @@ class CategoryColors {
   static const Color zhebZhuBaiPearl = Color.fromRGBO(247, 248, 250, 1);
   static const Color midasFingerGold = Color.fromRGBO(245, 178, 2, 1);
   static const Color transparent = Colors.transparent;
-  static const Color koyu = Color(0x99154467);
 }
 
 class CategoryImage {

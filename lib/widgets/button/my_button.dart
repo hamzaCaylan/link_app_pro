@@ -22,15 +22,19 @@ class AnaPage extends StatelessWidget {
         height: 60,
         width: 320,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            buttomIcon,
-            const SizedBox(
-              width: 5,
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(left: 30),
+              child: buttomIcon,
             ),
+            const Spacer(),
             Text(
               title,
               style: MyTextStyle.textStyle,
+            ),
+            const Spacer(
+              flex: 15,
             ),
           ],
         ),

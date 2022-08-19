@@ -58,11 +58,11 @@ class Linkcard extends StatelessWidget {
                       : ImageCart(
                           image: image,
                         ),
-                  linkcarttitle(title: title),
+                  Linkcarttitle(title: title),
                   const SizedBox(
                     height: 4,
                   ),
-                  linkcarturl(url: url),
+                  Linkcarturl(url: url),
                 ],
               ),
             ),
@@ -78,14 +78,14 @@ class Linkcard extends StatelessWidget {
 
   BoxDecoration linkcarddecor() {
     return BoxDecoration(
-      color: MyCustomarColors.deepWater,
+      color: MyCustomarColors.opicswallowBlue,
       borderRadius: BorderRadius.circular(15.0),
     );
   }
 }
 
-class linkcarturl extends StatelessWidget {
-  const linkcarturl({
+class Linkcarturl extends StatelessWidget {
+  const Linkcarturl({
     super.key,
     required this.url,
   });
@@ -106,8 +106,8 @@ class linkcarturl extends StatelessWidget {
   }
 }
 
-class linkcarttitle extends StatelessWidget {
-  const linkcarttitle({
+class Linkcarttitle extends StatelessWidget {
+  const Linkcarttitle({
     super.key,
     required this.title,
   });
@@ -118,7 +118,7 @@ class linkcarttitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
         child: Padding(
-      padding: EdgeInsets.only(left: 10),
+      padding: const EdgeInsets.only(left: 10),
       child: Text(
         title,
         style: const TextStyle(
@@ -134,10 +134,10 @@ class ImageCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 5, top: 0, bottom: 5, right: 5),
+      padding: const EdgeInsets.all(5),
       child: SizedBox(
         width: 360,
-        height: 160,
+        height: 150,
         child: Image.network(
           (image),
           fit: BoxFit.cover,

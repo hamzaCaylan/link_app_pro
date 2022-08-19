@@ -3,24 +3,18 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 import '../widgets/category/category_list.dart';
 import '../widgets/linkcard/linkcard.dart';
-import '../xf.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 void doNothing(BuildContext context) {}
 
 class _MyHomePageState extends State<MyHomePage> {
-  Future<void> _refresh() async {
-    return Future.delayed(
-      const Duration(seconds: 1),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -125,7 +119,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),*/
                       Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: SizedBox(
+                        child: Container(
+                          color: Colors.black12,
                           height: 350,
                           child: ListView(
                             padding: EdgeInsets.zero,

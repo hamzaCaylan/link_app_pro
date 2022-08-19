@@ -34,7 +34,7 @@ class CategoryCard extends StatelessWidget {
       image: DecorationImage(
         fit: BoxFit.cover,
         colorFilter: ColorFilter.mode(
-            CategoryColors.opicswallowBlue.withOpacity(0.3), BlendMode.dstATop),
+            CategoryColors.opicswallowBlue.withOpacity(0.5), BlendMode.dstATop),
         image: CategoryImage.link,
       ),
       borderRadius: BorderRadius.circular(15.0),
@@ -55,7 +55,7 @@ class _CategoryName extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Container(
         decoration: BoxDecoration(
-          color: CategoryColors.koyu,
+          color: CategoryColors.opicswallowBlue,
           borderRadius: BorderRadius.circular(10.0),
         ),
         height: CategorySize.categoryHeight,
