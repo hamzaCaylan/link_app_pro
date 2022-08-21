@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
+import '../widgets/link_listview/link_listview.dart';
 import 'homepage.dart';
-import 'load_page.dart';
 import 'profil.dart';
 
 var _selectedIndex = 0;
@@ -78,8 +78,7 @@ class _NavigatorBarState extends State<NavigatorBar> {
     );
   }
 
-  NavigationRailDestination buildRotatedTextRailDestinations(
-      String text, double padding) {
+  NavigationRailDestination buildRotatedTextRailDestinations(String text, double padding) {
     return NavigationRailDestination(
       icon: const SizedBox.shrink(),
       label: RotatedBox(
@@ -99,7 +98,7 @@ class _NavigatorBarState extends State<NavigatorBar> {
       case 0:
         return const MyHomePage(); //MyHomePage();
       case 1:
-        return const LoadingPage(); //SavePage();
+        return Container(); //SavePage();
       case 2:
         return const Profil(); //Profil();
     }

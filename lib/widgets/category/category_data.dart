@@ -45,4 +45,24 @@ List<CategorysData> categorysdata = [
     names: 'Film/Music',
     image: 'assets/images/4.png',
   ),
+  CategorysData(
+    names: 'Projec1',
+    image: 'assets/images/link.png',
+  ),
+  CategorysData(
+    names: 'Projec2',
+    image: 'assets/images/link.png',
+  ),
+  CategorysData(
+    names: 'Projec3',
+    image: 'assets/images/link.png',
+  ),
+  CategorysData(
+    names: 'Projec4',
+    image: 'assets/images/link.png',
+  ),
+  CategorysData(
+    names: 'Ek5',
+    image: 'assets/images/link.png',
+  ),
 ];

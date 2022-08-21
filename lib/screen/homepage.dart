@@ -23,10 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Stack(
           children: [
             Container(
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/00.webp'),
-                      fit: BoxFit.cover)),
+              decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/00.webp'), fit: BoxFit.cover)),
             ),
             Container(
               width: 360,
@@ -75,10 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: const Center(
                             child: Text(
                               'Link App.',
-                              style: TextStyle(
-                                  fontFamily: 'Header',
-                                  fontSize: 35,
-                                  color: Colors.white),
+                              style: TextStyle(fontFamily: 'Header', fontSize: 35, color: Colors.white),
                             ),
                           ),
                         ),
@@ -99,10 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       const Text(
                         'Linklerim',
-                        style: TextStyle(
-                            fontFamily: 'sHeader',
-                            fontSize: 16,
-                            color: MyCustomarColors.zhebZhuBaiPearl),
+                        style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomarColors.zhebZhuBaiPearl),
                       ),
                       /*SizedBox(
                         height: 350,
@@ -128,16 +119,6 @@ class _MyHomePageState extends State<MyHomePage> {
                               Linkcard(
                                 image: 'https://picsum.photos/450/300',
                                 title: 'deneme',
-                                url: 'https://picsum.photos/450/300',
-                              ),
-                              Linkcard(
-                                image: 'https://picsum.photos/450/200',
-                                title: 'bakas',
-                                url: 'https://picsum.photos/450/200',
-                              ),
-                              Linkcard(
-                                image: 'https://picsum.photos/440/300',
-                                title: 'kartal',
                                 url: 'https://picsum.photos/450/300',
                               ),
                             ],

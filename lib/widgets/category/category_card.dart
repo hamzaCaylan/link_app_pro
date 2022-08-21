@@ -33,8 +33,7 @@ class CategoryCard extends StatelessWidget {
       color: CategoryColors.transparent,
       image: DecorationImage(
         fit: BoxFit.cover,
-        colorFilter: ColorFilter.mode(
-            CategoryColors.opicswallowBlue.withOpacity(0.5), BlendMode.dstATop),
+        colorFilter: ColorFilter.mode(CategoryColors.opicswallowBlue.withOpacity(0.5), BlendMode.dstATop),
         image: CategoryImage.link,
       ),
       borderRadius: BorderRadius.circular(15.0),
