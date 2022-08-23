@@ -44,15 +44,11 @@ class CustomTextField extends StatelessWidget {
   }
 
   OutlineInputBorder textfieldfocusborder() {
-    return OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: MyCustomarColors.crystalBell));
+    return OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: MyCustomarColors.crystalBell));
   }
 
   OutlineInputBorder textfieldenabelborder() {
-    return OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
-        borderSide: const BorderSide(color: MyCustomarColors.crystalBell));
+    return OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: MyCustomarColors.crystalBell));
   }
 
   EdgeInsets textfieldmargin() => const EdgeInsets.only(left: 10, right: 10);

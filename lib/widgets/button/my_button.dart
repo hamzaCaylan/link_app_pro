@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'my_button_constants.dart';
 
-class AnaPage extends StatelessWidget {
-  const AnaPage({
+class MyButton extends StatelessWidget {
+  const MyButton({
     Key? key,
     required this.title,
     required this.onPress,

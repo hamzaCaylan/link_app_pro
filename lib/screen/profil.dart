@@ -33,10 +33,7 @@ class _ProfilState extends State<Profil> {
         child: Stack(
           children: [
             Container(
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/00.webp'),
-                      fit: BoxFit.cover)),
+              decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/00.webp'), fit: BoxFit.cover)),
             ),
             SizedBox(
               width: 360,
@@ -66,38 +63,33 @@ class _ProfilState extends State<Profil> {
                         const Spacer(),
                         const Text(
                           'emaill',
-                          style: TextStyle(
-                              color: MyCustomarColors.midasFingerGold),
+                          style: TextStyle(color: MyCustomarColors.midasFingerGold),
                         ),
                         const Spacer(),
                       ],
                     ),
                   ),
-                  AnaPage(
+                  MyButton(
                     title: 'Profil Ayar',
-                    buttomIcon: const Icon(Icons.settings,
-                        size: 24.0, color: MyCustomarColors.midasFingerGold),
+                    buttomIcon: const Icon(Icons.settings, size: 24.0, color: MyCustomarColors.midasFingerGold),
                     buttomColor: MyCustomarColors.benthicBlack,
                     onPress: () {},
                   ),
-                  AnaPage(
+                  MyButton(
                     title: 'Paylas',
-                    buttomIcon: const Icon(Icons.share_arrival_time_rounded,
-                        size: 24.0, color: MyCustomarColors.midasFingerGold),
+                    buttomIcon: const Icon(Icons.share_arrival_time_rounded, size: 24.0, color: MyCustomarColors.midasFingerGold),
                     buttomColor: MyCustomarColors.benthicBlack,
                     onPress: () {},
                   ),
-                  AnaPage(
+                  MyButton(
                     title: 'Oturumu Kapat',
-                    buttomIcon: const Icon(Icons.exit_to_app_outlined,
-                        size: 24.0, color: MyCustomarColors.midasFingerGold),
+                    buttomIcon: const Icon(Icons.exit_to_app_outlined, size: 24.0, color: MyCustomarColors.midasFingerGold),
                     buttomColor: MyCustomarColors.benthicBlack,
                     onPress: () {},
                   ),
-                  AnaPage(
+                  MyButton(
                     title: 'Yeniden Baslat',
-                    buttomIcon: const Icon(Icons.restart_alt,
-                        size: 24.0, color: MyCustomarColors.midasFingerGold),
+                    buttomIcon: const Icon(Icons.restart_alt, size: 24.0, color: MyCustomarColors.midasFingerGold),
                     buttomColor: MyCustomarColors.benthicBlack,
                     onPress: () {},
                   ),

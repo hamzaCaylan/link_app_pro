@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../link_listview/link_listview.dart';
 import 'category_data.dart';
 import 'category_constants.dart';
 
@@ -22,7 +23,14 @@ class CategoryCard extends StatelessWidget {
               _CategoryName(categorysdata: categorysdata),
             ],
           ),
-          onTap: () async {},
+          onTap: () async {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                  builder: (context) => LinkListDetail(
+                        category: categorysdata.names,
+                      )),
+            );
+          },
         ),
       ),
     );

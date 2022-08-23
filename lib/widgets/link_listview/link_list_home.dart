@@ -3,38 +3,34 @@ import 'package:flutter/material.dart';
 import '../../constants.dart';
 import '../linkcard/linkcard.dart';
 
-class LinkListDetail extends StatefulWidget {
-  const LinkListDetail({Key? key, required this.category}) : super(key: key);
-  final String category;
+class LinkListHome extends StatefulWidget {
+  const LinkListHome({Key? key}) : super(key: key);
 
   @override
-  State<LinkListDetail> createState() => _LinkListDetailState();
+  State<LinkListHome> createState() => _LinkListHomeState();
 }
 
-class _LinkListDetailState extends State<LinkListDetail> {
+class _LinkListHomeState extends State<LinkListHome> {
   final String emaill = 'hamza@gmail.com';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: MyCustomarColors.benthicBlack,
-        title: Text(widget.category),
-      ),
-      body: Container(
-        color: MyCustomarColors.deepWater,
-        child: Stack(
-          children: [
-            Container(
-              decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/00.webp'), fit: BoxFit.cover)),
-            ),
-            StreamBuilder(
-              //stream: FirebaseFirestore.instance.collection('Link').doc(emaill).collection('Link').snapshots(), //
-              stream: FirebaseFirestore.instance
-                  .collection('Link')
-                  .doc(emaill)
-                  .collection('Link')
-                  .where("Link Kategori ", isEqualTo: widget.category)
-                  .snapshots(),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(left: 20),
+          child: Text(
+            'Linklerim',
+            style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomarColors.zhebZhuBaiPearl),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10, right: 10),
+          child: Container(
+            decoration: const BoxDecoration(color: Colors.black12, borderRadius: BorderRadius.all(Radius.circular(10))),
+            height: 350,
+            child: StreamBuilder(
+              stream: FirebaseFirestore.instance.collection('Link').doc(emaill).collection('Link').snapshots(), //
               builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
@@ -57,12 +53,10 @@ class _LinkListDetailState extends State<LinkListDetail> {
                 }
               },
             ),
-          ],
-        ),
-      ),
+          ),
+        )
+      ],
     );
   }
 }
 // ,
-
-  //      width: MediaQuery.of(context).size.width,

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import '../../constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 String dontimage = 'Kayitli resim bulunamadi';
-String dontimageicon = 'asset/images/link.png';
+String dontimageicon = 'assets/images/link.png';
 
 class Linkcard extends StatelessWidget {
-  const Linkcard(
-      {Key? key, required this.title, required this.url, required this.image})
-      : super(key: key);
+  const Linkcard({Key? key, required this.title, required this.url, required this.image}) : super(key: key);
   final String title;
   final String url;
   final String image;
@@ -29,14 +28,12 @@ class Linkcard extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () async {
-          /*
-                                                    setState(() {});
-                                                    var data =
-                                                        Link!['Link URL'];
-                                                    //   if(await canLaunch(data)){
-                                                    if (data != "Kayıt Yok") {
-                                                      await launch(data);
-                                                    }*/
+          var data = url;
+          //   if(await canLaunch(data)){
+          if (data != "Kayıt Yok") {
+            // ignore: deprecated_member_use
+            await launch(data);
+          }
           // Navigator.of(context).push(MaterialPageRoute(builder: (context) => new PlayerDetail(playersdat: playersdata,)),);
         },
         child: Padding(
@@ -44,20 +41,14 @@ class Linkcard extends StatelessWidget {
           child: Container(
             decoration: linkcarddecor(),
             width: 350, //double.infinity,
-            height: /*url.toString() == null ||*/ url.toString() == 'null'
-                ? 135
-                : 220,
+            height: url.toString() == '' || url.toString() == 'null' ? 135 : 220,
             child: Padding(
               padding: padingallten(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  /*url.toString() == null || */ url.toString() == 'null'
-                      ? const DontImageCart()
-                      : ImageCart(
-                          image: image,
-                        ),
+                  url.toString() == '' || url.toString() == 'null' ? const DontImageCart() : ImageCart(image: image),
                   Linkcarttitle(title: title),
                   const SizedBox(
                     height: 4,
@@ -99,8 +90,7 @@ class Linkcarturl extends StatelessWidget {
       padding: const EdgeInsets.only(left: 10),
       child: Text(
         url,
-        style: const TextStyle(
-            color: MyCustomarColors.zhebZhuBaiPearl, fontSize: 13),
+        style: const TextStyle(color: MyCustomarColors.zhebZhuBaiPearl, fontSize: 13),
       ),
     ));
   }
@@ -121,8 +111,7 @@ class Linkcarttitle extends StatelessWidget {
       padding: const EdgeInsets.only(left: 10),
       child: Text(
         title,
-        style: const TextStyle(
-            color: MyCustomarColors.midasFingerGold, fontSize: 16),
+        style: const TextStyle(color: MyCustomarColors.midasFingerGold, fontSize: 16),
       ),
     ));
   }
@@ -141,17 +130,14 @@ class ImageCart extends StatelessWidget {
         child: Image.network(
           (image),
           fit: BoxFit.cover,
-          loadingBuilder: (BuildContext context, Widget child,
-              ImageChunkEvent? loadingProgress) {
+          loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
             if (loadingProgress == null) {
               return child;
             }
             return Center(
               child: CircularProgressIndicator(
-                value: loadingProgress.expectedTotalBytes != null
-                    ? loadingProgress.cumulativeBytesLoaded /
-                        loadingProgress.expectedTotalBytes!
-                    : null,
+                value:
+                    loadingProgress.expectedTotalBytes != null ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes! : null,
               ),
             );
           },
@@ -171,8 +157,7 @@ class DontImageCart extends StatelessWidget {
         color: MyCustomarColors.deepWater,
         image: DecorationImage(
           fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(
-              Colors.black26.withOpacity(0.2), BlendMode.dstATop),
+          colorFilter: ColorFilter.mode(Colors.black26.withOpacity(0.2), BlendMode.dstATop),
           image: AssetImage(dontimageicon),
         ),
         borderRadius: BorderRadius.circular(15.0),
@@ -192,8 +177,7 @@ class DontImageCart extends StatelessWidget {
   }
 
   TextStyle dontimagestyle() {
-    return const TextStyle(
-        color: MyCustomarColors.midasFingerGold, fontSize: 15);
+    return const TextStyle(color: MyCustomarColors.midasFingerGold, fontSize: 15);
   }
 }
 
@@ -238,16 +222,14 @@ class SlidableDelete extends StatelessWidget {
                         Icon(
                           Icons.delete_sweep,
                           size: 35,
-                          color: MyCustomarColors.orange,
+                          color: MyCustomarColors.carnelian,
                         ),
                         Expanded(
                           child: Padding(
                             padding: EdgeInsets.all(3.0),
                             child: Text(
                               'Link Baslik',
-                              style: TextStyle(
-                                  color: MyCustomarColors.swallowBlue,
-                                  fontSize: 15),
+                              style: TextStyle(color: MyCustomarColors.swallowBlue, fontSize: 15),
                             ),
                           ),
                         ),
@@ -266,8 +248,7 @@ class SlidableDelete extends StatelessWidget {
                         },
                         child: const Text(
                           'Evet.',
-                          style: TextStyle(
-                              color: MyCustomarColors.orange, fontSize: 18),
+                          style: TextStyle(color: MyCustomarColors.carnelian, fontSize: 18),
                         )),
                     TextButton(
                         onPressed: () {
@@ -275,9 +256,7 @@ class SlidableDelete extends StatelessWidget {
                         },
                         child: const Text(
                           'Hayır',
-                          style: TextStyle(
-                              color: MyCustomarColors.swallowBlue,
-                              fontSize: 18),
+                          style: TextStyle(color: MyCustomarColors.swallowBlue, fontSize: 18),
                         )),
                   ],
                 ));

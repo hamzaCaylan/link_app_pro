@@ -8,7 +8,7 @@ class MyCustomarColors {
   static const Color kuretakeBlackManga = Color.fromRGBO(0, 21, 34, 1);
   static const Color deepWater = Color.fromRGBO(34, 103, 147, 1);
   static const Color florence = Color.fromRGBO(146, 179, 114, 1);
-  static const Color orange = Color.fromRGBO(180, 26, 25, 1);
+  static const Color carnelian = Color.fromRGBO(180, 26, 25, 1);
   static const Color midasFingerGold = Color.fromRGBO(245, 178, 2, 1);
   static const Color crystalBell = Color.fromRGBO(239, 239, 239, 1);
   static const Color zhebZhuBaiPearl = Color.fromRGBO(247, 248, 250, 1);

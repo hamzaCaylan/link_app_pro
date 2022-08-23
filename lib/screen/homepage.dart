@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../constants.dart';
 import '../widgets/category/category_list.dart';
-import '../widgets/linkcard/linkcard.dart';
+import '../widgets/link_listview/link_list_home.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -32,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 children: [
                   const Spacer(
-                    flex: 6,
+                    flex: 8,
                   ),
                   Container(
                     width: 320,
@@ -83,50 +82,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   const Spacer(
-                    flex: 1,
+                    flex: 2,
                   ),
                   const CategoryList(),
                   const Spacer(
                     flex: 1,
                   ),
-                  Column(
-                    children: [
-                      const Text(
-                        'Linklerim',
-                        style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomarColors.zhebZhuBaiPearl),
-                      ),
-                      /*SizedBox(
-                        height: 350,
-                        child: ListView.builder(
-                          itemCount: 3,
-                          itemBuilder: (context, index) {
-                            return const Linkcard(
-                              image: 'https://picsum.photos/450/300',
-                              title: 'baslik',
-                              url: 'https://picsum.photos/450/300',
-                            );
-                          },
-                        ),
-                      ),*/
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: Container(
-                          color: Colors.black12,
-                          height: 350,
-                          child: ListView(
-                            padding: EdgeInsets.zero,
-                            children: const [
-                              Linkcard(
-                                image: 'https://picsum.photos/450/300',
-                                title: 'deneme',
-                                url: 'https://picsum.photos/450/300',
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
+                  const LinkListHome(),
                   const SizedBox(
                     height: 5,
                   ),

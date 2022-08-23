@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'drboxconstants.dart';
 
-String? linkaciklmama;
 String? linkcatagory = '';
-String? linkimage = '';
-String? katagory = '';
 
 class DropDownButton extends StatefulWidget {
   const DropDownButton({Key? key}) : super(key: key);
