@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../../constants.dart';
 import '../button/my_button.dart';
+import '../showmessage/show_message.dart';
 
 class UrlContainer extends StatelessWidget {
   const UrlContainer(
@@ -180,8 +181,19 @@ class UrlContainer extends StatelessWidget {
             CollectionReference collectionReference = FirebaseFirestore.instance.collection('Link').doc('hamza@gmail.com').collection('Link');
             // CollectionReference collectionReference = FirebaseFirestore.instance.collection('Link').doc('emaill').collection('Link');
             collectionReference.add(demoData);
-
-            //showerMessage(context);
+            showDialog(
+                context: context,
+                builder: (context) => MyAlertWidget(
+                      title: 'Kayıt Başarı ile alındı',
+                      undertitle: 'Are you sure to exit app?',
+                      luttie: 'assets/lotties/ok.json',
+                      repeat: false,
+                      onPress: () {
+                        Navigator.pop(context);
+                      },
+                      onPressTwoSee: false,
+                      onPressTwo: () {},
+                    ));
           },
         )
       ],

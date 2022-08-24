@@ -12,6 +12,17 @@ class MyCustomerColors {
   static const Color midasFingerGold = Color.fromRGBO(245, 178, 2, 1);
   static const Color crystalBell = Color.fromRGBO(239, 239, 239, 1);
   static const Color zhebZhuBaiPearl = Color.fromRGBO(247, 248, 250, 1);
+/*const dark = Color(0xff0A160E);
+const green_dark = const Color(0xff000015);
+const green_dark_light = Color(0xff001522);
+const green_lght = Color(0xff226793);
+const green_light2 = Color(0xff92B372);
+const orange = Color(0xFFB41A19);
+const yellow_low = Color(0xffF5B202);
+const yellow = Color(0xdfEFEFEF);
+const grey = const Color(0xffA9ACA8);
+const white_white = Color(0xffF7F8FA);
+const beyaz = Color(0xFFF1EFF1);*/
 }
 
 class CustomImage {

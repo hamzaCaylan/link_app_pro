@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:lottie/lottie.dart';
 import '../../constants.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../showmessage/show_message.dart';
 
 String dontimage = 'Kayitli resim bulunamadi';
 String dontimageicon = 'assets/images/link.png';
@@ -16,9 +19,13 @@ class Linkcard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Slidable(
       key: UniqueKey(),
-      startActionPane: const ActionPane(
-        motion: DrawerMotion(),
-        children: [SlidableDelete()],
+      startActionPane: ActionPane(
+        motion: const DrawerMotion(),
+        children: [
+          SlidableDelete(
+            title: title,
+          )
+        ],
       ),
       endActionPane: const ActionPane(
         motion: DrawerMotion(),
@@ -135,9 +142,9 @@ class ImageCart extends StatelessWidget {
               return child;
             }
             return Center(
-              child: CircularProgressIndicator(
-                value:
-                    loadingProgress.expectedTotalBytes != null ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes! : null,
+              child: Lottie.asset(
+                'assets/lotties/link.json',
+                repeat: true,
               ),
             );
           },
@@ -146,6 +153,12 @@ class ImageCart extends StatelessWidget {
     );
   }
 }
+/*
+CircularProgressIndicator(
+                value:
+                    loadingProgress.expectedTotalBytes != null ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes! : null,
+              )
+*/
 
 class DontImageCart extends StatelessWidget {
   const DontImageCart({Key? key}) : super(key: key);
@@ -203,63 +216,44 @@ class SlidableShare extends StatelessWidget {
 class SlidableDelete extends StatelessWidget {
   const SlidableDelete({
     super.key,
+    required this.title,
   });
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return SlidableAction(
       onPressed: (context) {
         showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-                  backgroundColor: MyCustomerColors.midasFingerGold,
-                  title: Container(
-                    height: 90,
-                    width: 300,
-                    color: MyCustomerColors.zhebZhuBaiPearl,
-                    child: Column(
-                      children: const <Widget>[
-                        Icon(
-                          Icons.delete_sweep,
-                          size: 35,
-                          color: MyCustomerColors.carnelian,
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.all(3.0),
-                            child: Text(
-                              'Link Baslik',
-                              style: TextStyle(color: MyCustomerColors.swallowBlue, fontSize: 15),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          "Adlı yayın silinsin mi?",
-                          style: TextStyle(color: Colors.black38, fontSize: 13),
-                        ),
-                      ],
-                    ),
-                  ),
-                  //content: Text("data"),
-                  actions: <Widget>[
-                    TextButton(
-                        onPressed: () {
-                          // snapshot.data!.docs[index].reference.delete().whenComplete(() => Navigator.pop(context));
-                        },
-                        child: const Text(
-                          'Evet.',
-                          style: TextStyle(color: MyCustomerColors.carnelian, fontSize: 18),
-                        )),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text(
-                          'Hayır',
-                          style: TextStyle(color: MyCustomerColors.swallowBlue, fontSize: 18),
-                        )),
-                  ],
-                ));
+          context: context,
+          builder: (context) => MyAlertWidget(
+            title: title,
+            undertitle: 'Adlı yayın silinsin mi?',
+            luttie: 'assets/lotties/deletequ.json',
+            repeat: true,
+            onPress: () {
+              Navigator.pop(context);
+            },
+            onPressTwoSee: true,
+            onPressTwo: () {
+              Navigator.pop(context);
+              showDialog(
+                context: context,
+                builder: (context) => MyAlertWidget(
+                  title: title,
+                  undertitle: 'Link silindi.',
+                  luttie: 'assets/lotties/delete.json',
+                  repeat: false,
+                  onPress: () {
+                    Navigator.pop(context);
+                  },
+                  onPressTwoSee: false,
+                  onPressTwo: () {},
+                ),
+              );
+            },
+          ),
+        );
       },
       backgroundColor: const Color(0xFFB41A19),
       foregroundColor: Colors.white,

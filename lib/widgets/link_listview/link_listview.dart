@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import '../../constants.dart';
 import '../linkcard/linkcard.dart';
 
@@ -37,23 +38,40 @@ class _LinkListDetailState extends State<LinkListDetail> {
                   .snapshots(),
               builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasData) {
-                  return ListView.builder(
-                    itemCount: snapshot.data?.docs.length,
-                    itemBuilder: (context, index) {
-                      var link = snapshot.data?.docs[index];
-                      var title = link!['Link Baslik'].toString();
-                      var image = link['Link Image'].toString();
-                      var url = link['Link URL'].toString();
-                      return Linkcard(
-                        title: title,
-                        image: image,
-                        url: url,
-                      );
-                      //
-                    },
-                  );
+                  // ignore: prefer_is_empty
+                  if (snapshot.data?.docs.length == 0) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Lottie.asset(
+                          'assets/lotties/space0.json',
+                          repeat: false,
+                        ),
+                        const Text(
+                          'Kayitli Link bulunmuyor!!!',
+                          style: TextStyle(fontSize: 18, color: MyCustomerColors.midasFingerGold),
+                        )
+                      ],
+                    );
+                  } else {
+                    return ListView.builder(
+                      itemCount: snapshot.data?.docs.length,
+                      itemBuilder: (context, index) {
+                        var link = snapshot.data?.docs[index];
+                        var title = link!['Link Baslik'].toString();
+                        var image = link['Link Image'].toString();
+                        var url = link['Link URL'].toString();
+                        return Linkcard(
+                          title: title,
+                          image: image,
+                          url: url,
+                        );
+                        //
+                      },
+                    );
+                  }
                 } else {
-                  return const Center(child: Text("Kayıt bulunamadı"));
+                  return const SizedBox();
                 }
               },
             ),

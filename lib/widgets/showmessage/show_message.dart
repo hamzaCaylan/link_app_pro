@@ -8,22 +8,34 @@ Future<dynamic> showerMessage(BuildContext context) {
       builder: (context) => MyAlertWidget(
             title: 'Kayıt Başarı ile alındı',
             undertitle: 'Are you sure to exit app?',
-            luttie: 'assets/lotties/404.json',
+            luttie: 'assets/lotties/ok.json',
             repeat: false,
             onPress: () {
               Navigator.pop(context);
             },
+            onPressTwoSee: false,
+            onPressTwo: () {},
           ));
 }
 
 class MyAlertWidget extends StatefulWidget {
-  const MyAlertWidget({Key? key, required this.title, required this.undertitle, required this.luttie, required this.onPress, required this.repeat})
-      : super(key: key);
+  const MyAlertWidget({
+    Key? key,
+    required this.title,
+    required this.undertitle,
+    required this.luttie,
+    required this.onPress,
+    required this.repeat,
+    required this.onPressTwoSee,
+    required this.onPressTwo,
+  }) : super(key: key);
   final String title;
   final String undertitle;
   final String luttie;
   final VoidCallback onPress;
+  final VoidCallback onPressTwo;
   final bool repeat;
+  final bool onPressTwoSee;
 
   @override
   State<MyAlertWidget> createState() => _MyAlertWidgetState();
@@ -50,11 +62,12 @@ class _MyAlertWidgetState extends State<MyAlertWidget> {
         icon: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
-            width: 160,
-            height: 120,
-            child: Lottie.asset(
-              widget.luttie,
-              repeat: widget.repeat,
+            height: 140,
+            child: Center(
+              child: Lottie.asset(
+                widget.luttie,
+                repeat: widget.repeat,
+              ),
             ),
           ),
         ),
@@ -63,11 +76,19 @@ class _MyAlertWidgetState extends State<MyAlertWidget> {
           style: const TextStyle(color: MyCustomerColors.zhebZhuBaiPearl, fontSize: 17),
         ),
         actions: <Widget>[
+          (widget.onPressTwoSee) == true
+              ? TextButton(
+                  onPressed: widget.onPressTwo,
+                  child: const Text(
+                    'Sil',
+                    style: TextStyle(color: MyCustomerColors.midasFingerGold, fontSize: 20),
+                  ))
+              : const SizedBox(),
           TextButton(
               onPressed: widget.onPress,
-              child: const Text(
-                'Tamam',
-                style: TextStyle(color: MyCustomerColors.midasFingerGold, fontSize: 20),
+              child: Text(
+                (widget.onPressTwoSee) == true ? 'Iptal Et..' : 'Tamam',
+                style: const TextStyle(color: MyCustomerColors.midasFingerGold, fontSize: 20),
               )),
         ],
       ),

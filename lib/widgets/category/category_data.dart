@@ -46,23 +46,23 @@ List<CategorysData> categorysdata = [
     image: 'assets/images/4.png',
   ),
   CategorysData(
-    names: 'Projec1',
+    names: 'Proje 1',
     image: 'assets/images/link.png',
   ),
   CategorysData(
-    names: 'Projec2',
+    names: 'Proje 2',
     image: 'assets/images/link.png',
   ),
   CategorysData(
-    names: 'Projec3',
+    names: 'Proje 3',
     image: 'assets/images/link.png',
   ),
   CategorysData(
-    names: 'Projec4',
+    names: 'Proje 4',
     image: 'assets/images/link.png',
   ),
   CategorysData(
-    names: 'Ek5',
+    names: 'Proje 5',
     image: 'assets/images/link.png',
   ),
 ];

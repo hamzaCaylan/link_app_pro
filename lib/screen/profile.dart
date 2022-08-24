@@ -61,7 +61,20 @@ class _ProfileState extends State<Profile> {
                     buttonIcon: const Icon(Icons.settings, size: 24.0, color: MyCustomerColors.midasFingerGold),
                     buttonColor: MyCustomerColors.benthicBlack,
                     onPress: () {
-                      showerMessage(context);
+                      showDialog(
+                        context: context,
+                        builder: (context) => MyAlertWidget(
+                          title: '404 error',
+                          undertitle: 'Lutfen internet erisimin kotrol edin.',
+                          luttie: 'assets/lotties/404.json',
+                          repeat: true,
+                          onPress: () {
+                            Navigator.pop(context);
+                          },
+                          onPressTwoSee: false,
+                          onPressTwo: () {},
+                        ),
+                      );
                       /*Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => const rsagele(
