@@ -18,7 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: MyCustomarColors.benthicBlack,
+        color: MyCustomerColors.benthicBlack,
         child: Stack(
           children: [
             Container(
@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: 320,
                     height: 60,
                     decoration: const BoxDecoration(
-                        color: MyCustomarColors.midasFingerGold,
+                        color: MyCustomerColors.midasFingerGold,
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(20.0),
                             bottomLeft: Radius.circular(20.0),

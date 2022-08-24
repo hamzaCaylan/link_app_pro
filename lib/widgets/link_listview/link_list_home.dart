@@ -21,7 +21,7 @@ class _LinkListHomeState extends State<LinkListHome> {
           padding: EdgeInsets.only(left: 20),
           child: Text(
             'Linklerim',
-            style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomarColors.zhebZhuBaiPearl),
+            style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomerColors.zhebZhuBaiPearl),
           ),
         ),
         Padding(

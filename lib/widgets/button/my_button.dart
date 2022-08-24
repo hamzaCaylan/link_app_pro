@@ -6,13 +6,13 @@ class MyButton extends StatelessWidget {
     Key? key,
     required this.title,
     required this.onPress,
-    required this.buttomIcon,
-    required this.buttomColor,
+    required this.buttonIcon,
+    required this.buttonColor,
   }) : super(key: key);
   final String title;
   final VoidCallback onPress;
-  final Icon buttomIcon;
-  final Color buttomColor;
+  final Icon buttonIcon;
+  final Color buttonColor;
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -26,7 +26,7 @@ class MyButton extends StatelessWidget {
             const Spacer(),
             Padding(
               padding: const EdgeInsets.only(left: 30),
-              child: buttomIcon,
+              child: buttonIcon,
             ),
             const Spacer(),
             Text(

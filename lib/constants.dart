@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MyCustomarColors {
+class MyCustomerColors {
   static const Color benthicBlack = Color.fromRGBO(0, 0, 21, 1);
   static const Color swallowBlue = Color.fromRGBO(21, 68, 103, 1);
   static const Color opicswallowBlue = Color.fromARGB(162, 21, 67, 103);

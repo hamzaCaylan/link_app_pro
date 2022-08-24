@@ -32,9 +32,9 @@ class CustomTextField extends StatelessWidget {
         controller: controller,
         decoration: InputDecoration(
           labelText: title,
-          labelStyle: const TextStyle(color: MyCustomarColors.zhebZhuBaiPearl),
+          labelStyle: const TextStyle(color: MyCustomerColors.zhebZhuBaiPearl),
           filled: true,
-          fillColor: MyCustomarColors.deepWater,
+          fillColor: MyCustomerColors.deepWater,
           enabledBorder: textfieldenabelborder(),
           focusedBorder: textfieldfocusborder(),
         ),
@@ -44,11 +44,11 @@ class CustomTextField extends StatelessWidget {
   }
 
   OutlineInputBorder textfieldfocusborder() {
-    return OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: MyCustomarColors.crystalBell));
+    return OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: MyCustomerColors.crystalBell));
   }
 
   OutlineInputBorder textfieldenabelborder() {
-    return OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: MyCustomarColors.crystalBell));
+    return OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: MyCustomerColors.crystalBell));
   }
 
   EdgeInsets textfieldmargin() => const EdgeInsets.only(left: 10, right: 10);

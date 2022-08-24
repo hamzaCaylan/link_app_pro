@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
 import 'homepage.dart';
-import 'profil.dart';
+import 'profile.dart';
 import 'save_page.dart';
 
 var _selectedIndex = 0;
@@ -16,23 +16,17 @@ class NavigatorBar extends StatefulWidget {
 
 class _NavigatorBarState extends State<NavigatorBar> {
   int pence = 0;
-  //final AuthService _authService = AuthService();
-
-  qouik() {
-    // _authService.signOut();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyCustomarColors.benthicBlack,
+      backgroundColor: MyCustomerColors.benthicBlack,
       body: Row(
         children: [
           NavigationRail(
-            backgroundColor: MyCustomarColors.benthicBlack,
+            backgroundColor: MyCustomerColors.benthicBlack,
             minWidth: MediaQuery.of(context).size.width * 0.116,
             groupAlignment: 0.75,
-            //selectedIconTheme: IconThemeData(color: beyaz,),
             selectedIndex: _selectedIndex,
             onDestinationSelected: (int index) {
               setState(
@@ -60,7 +54,7 @@ class _NavigatorBarState extends State<NavigatorBar> {
 
   TextStyle unselecttextstyle() {
     return const TextStyle(
-      color: MyCustomarColors.deepWater,
+      color: MyCustomerColors.deepWater,
       fontWeight: FontWeight.bold,
       fontFamily: 'Player',
       fontSize: 11.0,
@@ -70,7 +64,7 @@ class _NavigatorBarState extends State<NavigatorBar> {
 
   TextStyle selecttextstyle() {
     return const TextStyle(
-      color: MyCustomarColors.midasFingerGold,
+      color: MyCustomerColors.midasFingerGold,
       fontWeight: FontWeight.bold,
       fontFamily: 'Player',
       fontSize: 12.0,
@@ -100,7 +94,7 @@ class _NavigatorBarState extends State<NavigatorBar> {
       case 1:
         return const SavePage(); //SavePage();
       case 2:
-        return const Profil(); //Profil();
+        return const Profile(); //Profil();
     }
   }
 }

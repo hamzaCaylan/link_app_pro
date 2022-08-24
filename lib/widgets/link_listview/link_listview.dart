@@ -17,11 +17,11 @@ class _LinkListDetailState extends State<LinkListDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: MyCustomarColors.benthicBlack,
+        backgroundColor: MyCustomerColors.benthicBlack,
         title: Text(widget.category),
       ),
       body: Container(
-        color: MyCustomarColors.deepWater,
+        color: MyCustomerColors.deepWater,
         child: Stack(
           children: [
             Container(

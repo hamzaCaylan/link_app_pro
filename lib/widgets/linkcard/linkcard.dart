@@ -69,7 +69,7 @@ class Linkcard extends StatelessWidget {
 
   BoxDecoration linkcarddecor() {
     return BoxDecoration(
-      color: MyCustomarColors.opicswallowBlue,
+      color: MyCustomerColors.opicswallowBlue,
       borderRadius: BorderRadius.circular(15.0),
     );
   }
@@ -90,7 +90,7 @@ class Linkcarturl extends StatelessWidget {
       padding: const EdgeInsets.only(left: 10),
       child: Text(
         url,
-        style: const TextStyle(color: MyCustomarColors.zhebZhuBaiPearl, fontSize: 13),
+        style: const TextStyle(color: MyCustomerColors.zhebZhuBaiPearl, fontSize: 13),
       ),
     ));
   }
@@ -111,7 +111,7 @@ class Linkcarttitle extends StatelessWidget {
       padding: const EdgeInsets.only(left: 10),
       child: Text(
         title,
-        style: const TextStyle(color: MyCustomarColors.midasFingerGold, fontSize: 16),
+        style: const TextStyle(color: MyCustomerColors.midasFingerGold, fontSize: 16),
       ),
     ));
   }
@@ -154,7 +154,7 @@ class DontImageCart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: MyCustomarColors.deepWater,
+        color: MyCustomerColors.deepWater,
         image: DecorationImage(
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(Colors.black26.withOpacity(0.2), BlendMode.dstATop),
@@ -177,7 +177,7 @@ class DontImageCart extends StatelessWidget {
   }
 
   TextStyle dontimagestyle() {
-    return const TextStyle(color: MyCustomarColors.midasFingerGold, fontSize: 15);
+    return const TextStyle(color: MyCustomerColors.midasFingerGold, fontSize: 15);
   }
 }
 
@@ -212,24 +212,24 @@ class SlidableDelete extends StatelessWidget {
         showDialog(
             context: context,
             builder: (context) => AlertDialog(
-                  backgroundColor: MyCustomarColors.midasFingerGold,
+                  backgroundColor: MyCustomerColors.midasFingerGold,
                   title: Container(
                     height: 90,
                     width: 300,
-                    color: MyCustomarColors.zhebZhuBaiPearl,
+                    color: MyCustomerColors.zhebZhuBaiPearl,
                     child: Column(
                       children: const <Widget>[
                         Icon(
                           Icons.delete_sweep,
                           size: 35,
-                          color: MyCustomarColors.carnelian,
+                          color: MyCustomerColors.carnelian,
                         ),
                         Expanded(
                           child: Padding(
                             padding: EdgeInsets.all(3.0),
                             child: Text(
                               'Link Baslik',
-                              style: TextStyle(color: MyCustomarColors.swallowBlue, fontSize: 15),
+                              style: TextStyle(color: MyCustomerColors.swallowBlue, fontSize: 15),
                             ),
                           ),
                         ),
@@ -248,7 +248,7 @@ class SlidableDelete extends StatelessWidget {
                         },
                         child: const Text(
                           'Evet.',
-                          style: TextStyle(color: MyCustomarColors.carnelian, fontSize: 18),
+                          style: TextStyle(color: MyCustomerColors.carnelian, fontSize: 18),
                         )),
                     TextButton(
                         onPressed: () {
@@ -256,7 +256,7 @@ class SlidableDelete extends StatelessWidget {
                         },
                         child: const Text(
                           'Hayır',
-                          style: TextStyle(color: MyCustomarColors.swallowBlue, fontSize: 18),
+                          style: TextStyle(color: MyCustomerColors.swallowBlue, fontSize: 18),
                         )),
                   ],
                 ));

@@ -1,35 +1,22 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
 import '../widgets/button/my_button.dart';
+import '../widgets/showmessage/show_message.dart';
 
-class Profil extends StatefulWidget {
-  const Profil({Key? key}) : super(key: key);
+class Profile extends StatefulWidget {
+  const Profile({Key? key}) : super(key: key);
 
   @override
-  State<Profil> createState() => _ProfilState();
+  State<Profile> createState() => _ProfileState();
 }
 
-class _ProfilState extends State<Profil> {
-  /*final AuthService _authService = AuthService();
-
-  Future<Null> logout() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('email', '');
-    prefs.setString('password', '');
-    print('kullaniciyi SILDIM');
-    setState(() {
-      emaill = '';
-      password = '';
-      showSpinner = false;
-    });
-  }*/
-
+class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyCustomarColors.opicswallowBlue,
+      backgroundColor: MyCustomerColors.opicswallowBlue,
       body: Container(
-        color: MyCustomarColors.benthicBlack,
+        color: MyCustomerColors.benthicBlack,
         child: Stack(
           children: [
             Container(
@@ -44,7 +31,7 @@ class _ProfilState extends State<Profil> {
                 children: [
                   Container(
                     decoration: const BoxDecoration(
-                        color: MyCustomarColors.opicswallowBlue,
+                        color: MyCustomerColors.opicswallowBlue,
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30.0),
                             bottomLeft: Radius.circular(30.0),
@@ -62,8 +49,8 @@ class _ProfilState extends State<Profil> {
                         ),
                         const Spacer(),
                         const Text(
-                          'emaill',
-                          style: TextStyle(color: MyCustomarColors.midasFingerGold),
+                          'email',
+                          style: TextStyle(color: MyCustomerColors.midasFingerGold),
                         ),
                         const Spacer(),
                       ],
@@ -71,26 +58,37 @@ class _ProfilState extends State<Profil> {
                   ),
                   MyButton(
                     title: 'Profil Ayar',
-                    buttomIcon: const Icon(Icons.settings, size: 24.0, color: MyCustomarColors.midasFingerGold),
-                    buttomColor: MyCustomarColors.benthicBlack,
-                    onPress: () {},
+                    buttonIcon: const Icon(Icons.settings, size: 24.0, color: MyCustomerColors.midasFingerGold),
+                    buttonColor: MyCustomerColors.benthicBlack,
+                    onPress: () {
+                      showerMessage(context);
+                      /*Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const rsagele(
+                            title: 'Kayıt Başarı ile alındı',
+                            undertitle: 'Are you sure to exit app?',
+                            luttie: 'https://assets3.lottiefiles.com/packages/lf20_0jomt6wm.json',
+                          ),
+                        ),
+                      );*/ //
+                    },
                   ),
                   MyButton(
                     title: 'Paylas',
-                    buttomIcon: const Icon(Icons.share_arrival_time_rounded, size: 24.0, color: MyCustomarColors.midasFingerGold),
-                    buttomColor: MyCustomarColors.benthicBlack,
+                    buttonIcon: const Icon(Icons.share_arrival_time_rounded, size: 24.0, color: MyCustomerColors.midasFingerGold),
+                    buttonColor: MyCustomerColors.benthicBlack,
                     onPress: () {},
                   ),
                   MyButton(
                     title: 'Oturumu Kapat',
-                    buttomIcon: const Icon(Icons.exit_to_app_outlined, size: 24.0, color: MyCustomarColors.midasFingerGold),
-                    buttomColor: MyCustomarColors.benthicBlack,
+                    buttonIcon: const Icon(Icons.exit_to_app_outlined, size: 24.0, color: MyCustomerColors.midasFingerGold),
+                    buttonColor: MyCustomerColors.benthicBlack,
                     onPress: () {},
                   ),
                   MyButton(
                     title: 'Yeniden Baslat',
-                    buttomIcon: const Icon(Icons.restart_alt, size: 24.0, color: MyCustomarColors.midasFingerGold),
-                    buttomColor: MyCustomarColors.benthicBlack,
+                    buttonIcon: const Icon(Icons.restart_alt, size: 24.0, color: MyCustomerColors.midasFingerGold),
+                    buttonColor: MyCustomerColors.benthicBlack,
                     onPress: () {},
                   ),
                 ],

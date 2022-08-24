@@ -28,7 +28,7 @@ class UrlContainer extends StatelessWidget {
                 width: 300,
                 child: Text(
                   'Resim',
-                  style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomarColors.zhebZhuBaiPearl),
+                  style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomerColors.zhebZhuBaiPearl),
                 ),
               ),
             ),
@@ -65,7 +65,7 @@ class UrlContainer extends StatelessWidget {
               width: 300,
               child: Text(
                 'Bilgiler ',
-                style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomarColors.zhebZhuBaiPearl),
+                style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomerColors.zhebZhuBaiPearl),
               ),
             ),
             Padding(
@@ -96,12 +96,12 @@ class UrlContainer extends StatelessWidget {
                               children: [
                                 const Text(
                                   'Baslik : ',
-                                  style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomarColors.zhebZhuBaiPearl),
+                                  style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomerColors.zhebZhuBaiPearl),
                                 ),
                                 Expanded(
                                     child: Text(
                                   linkBaslik,
-                                  style: const TextStyle(fontFamily: 'sHeader', fontSize: 13, color: MyCustomarColors.midasFingerGold),
+                                  style: const TextStyle(fontFamily: 'sHeader', fontSize: 13, color: MyCustomerColors.midasFingerGold),
                                 )),
                               ],
                             ),
@@ -111,12 +111,12 @@ class UrlContainer extends StatelessWidget {
                               children: [
                                 const Text(
                                   'Katagori : ',
-                                  style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomarColors.zhebZhuBaiPearl),
+                                  style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomerColors.zhebZhuBaiPearl),
                                 ),
                                 Expanded(
                                     child: Text(
                                   linkCatagory,
-                                  style: const TextStyle(fontFamily: 'sHeader', fontSize: 13, color: MyCustomarColors.midasFingerGold),
+                                  style: const TextStyle(fontFamily: 'sHeader', fontSize: 13, color: MyCustomerColors.midasFingerGold),
                                 )),
                               ],
                             ),
@@ -126,12 +126,12 @@ class UrlContainer extends StatelessWidget {
                               children: [
                                 const Text(
                                   'Url   : ',
-                                  style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomarColors.zhebZhuBaiPearl),
+                                  style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomerColors.zhebZhuBaiPearl),
                                 ),
                                 Expanded(
                                     child: Text(
                                   linkURL,
-                                  style: const TextStyle(fontFamily: 'sHeader', fontSize: 13, color: MyCustomarColors.midasFingerGold),
+                                  style: const TextStyle(fontFamily: 'sHeader', fontSize: 13, color: MyCustomerColors.midasFingerGold),
                                 )),
                               ],
                             ),
@@ -141,12 +141,12 @@ class UrlContainer extends StatelessWidget {
                               children: [
                                 const Text(
                                   'Aciklama : ',
-                                  style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomarColors.zhebZhuBaiPearl),
+                                  style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomerColors.zhebZhuBaiPearl),
                                 ),
                                 Expanded(
                                     child: Text(
                                   linAciklama,
-                                  style: const TextStyle(fontFamily: 'sHeader', fontSize: 13, color: MyCustomarColors.midasFingerGold),
+                                  style: const TextStyle(fontFamily: 'sHeader', fontSize: 13, color: MyCustomerColors.midasFingerGold),
                                 )),
                               ],
                             ),
@@ -165,8 +165,8 @@ class UrlContainer extends StatelessWidget {
         ),
         MyButton(
           title: 'Link Kaydet',
-          buttomIcon: const Icon(Icons.save_as, size: 24.0, color: MyCustomarColors.midasFingerGold),
-          buttomColor: MyCustomarColors.benthicBlack,
+          buttonIcon: const Icon(Icons.save_as, size: 24.0, color: MyCustomerColors.midasFingerGold),
+          buttonColor: MyCustomerColors.benthicBlack,
           onPress: () {
             // print(Link_Baslik+LinkURL+Link_Aciklmama+Link_Catagory);
             Map<String, dynamic> demoData = {
@@ -177,9 +177,10 @@ class UrlContainer extends StatelessWidget {
               "Link Image": linkImage,
             };
             //CollectionReference collectionReference = FirebaseFirestore.instance.collection('Doc-MAK').doc('$email').collection('yayin').doc('$yayinturu').collection('$yayinalan');collectionReference.add(demoData);
-            CollectionReference collectionReference = FirebaseFirestore.instance.collection('Link').doc('emaill').collection('Link');
+            CollectionReference collectionReference = FirebaseFirestore.instance.collection('Link').doc('hamza@gmail.com').collection('Link');
             // CollectionReference collectionReference = FirebaseFirestore.instance.collection('Link').doc('emaill').collection('Link');
             collectionReference.add(demoData);
+
             //showerMessage(context);
           },
         )

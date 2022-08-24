@@ -10,7 +10,7 @@ class LoadingPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          color: MyCustomarColors.benthicBlack,
+          color: MyCustomerColors.benthicBlack,
           image: DecorationImage(
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(Colors.black26.withOpacity(0.2), BlendMode.dstATop),
@@ -29,16 +29,16 @@ class LoadingPage extends StatelessWidget {
                 'assets/images/link.png',
                 height: 90,
                 width: 90,
-                color: MyCustomarColors.midasFingerGold,
+                color: MyCustomerColors.midasFingerGold,
               ),
               const Text(
                 'Link App',
-                style: TextStyle(fontFamily: 'Header', fontSize: 50, color: MyCustomarColors.midasFingerGold),
+                style: TextStyle(fontFamily: 'Header', fontSize: 50, color: MyCustomerColors.midasFingerGold),
               ),
               const Spacer(),
               const Text(
                 'Caylo Tech',
-                style: TextStyle(fontFamily: 'Header', fontSize: 25, color: MyCustomarColors.midasFingerGold),
+                style: TextStyle(fontFamily: 'Header', fontSize: 25, color: MyCustomerColors.midasFingerGold),
               ),
               const SizedBox(
                 height: 20,

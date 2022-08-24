@@ -27,24 +27,11 @@ var linkAciklmama;
 var linkImage;
 
 class _SavePageState extends State<SavePage> {
-  String? value;
-  final items = [
-    'Haber',
-    'Bilim',
-    'Arastirma',
-    'Kitap',
-    'Hobi',
-    'Eglence',
-    'Craft',
-    'Alisveris',
-    'Film/Music',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      color: MyCustomarColors.benthicBlack,
+      color: MyCustomerColors.benthicBlack,
       child: Stack(
         children: [
           bluerposition(),
@@ -67,8 +54,8 @@ class _SavePageState extends State<SavePage> {
                     ),
                     MyButton(
                       title: 'Verileri Temizle',
-                      buttomIcon: const Icon(Icons.clear_all_rounded, size: 24.0, color: MyCustomarColors.midasFingerGold),
-                      buttomColor: MyCustomarColors.benthicBlack,
+                      buttonIcon: const Icon(Icons.clear_all_rounded, size: 24.0, color: MyCustomerColors.midasFingerGold),
+                      buttonColor: MyCustomerColors.benthicBlack,
                       onPress: () {
                         setState(() {
                           linkBaslik = '';
@@ -90,8 +77,8 @@ class _SavePageState extends State<SavePage> {
                         ? const SizedBox()
                         : MyButton(
                             title: 'Link`i Ara',
-                            buttomIcon: const Icon(Icons.search, size: 24.0, color: MyCustomarColors.midasFingerGold),
-                            buttomColor: MyCustomarColors.benthicBlack,
+                            buttonIcon: const Icon(Icons.search, size: 24.0, color: MyCustomerColors.midasFingerGold),
+                            buttonColor: MyCustomerColors.benthicBlack,
                             onPress: () {
                               setState(() {});
                             },
@@ -123,7 +110,7 @@ class _SavePageState extends State<SavePage> {
           width: 700,
           height: 700,
           decoration: const BoxDecoration(
-              color: MyCustomarColors.benthicBlack,
+              color: MyCustomerColors.benthicBlack,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(500.0),
                   bottomLeft: Radius.circular(500.0),
@@ -131,111 +118,6 @@ class _SavePageState extends State<SavePage> {
                   topRight: Radius.circular(500.0))),
         ));
   }
-
-  Future<dynamic> showerMessage(BuildContext context) {
-    return showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              backgroundColor: MyCustomarColors.midasFingerGold,
-              title: Container(
-                height: 130,
-                width: 300,
-                color: MyCustomarColors.zhebZhuBaiPearl,
-                child: Column(
-                  children: const <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.assignment_turned_in,
-                        color: MyCustomarColors.midasFingerGold,
-                        size: 35,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(4.0),
-                      child: Text(
-                        "Kayıt Başarı ile alındı",
-                        style: TextStyle(color: MyCustomarColors.benthicBlack, fontSize: 17),
-                      ),
-                    ),
-                    Text(
-                      "Are you sure to exit app?",
-                      style: TextStyle(color: Colors.black38, fontSize: 13),
-                    ),
-                  ],
-                ),
-              ),
-              //content: Text("data"),
-              actions: <Widget>[
-                TextButton(
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                                backgroundColor: MyCustomarColors.midasFingerGold,
-                                title: Container(
-                                  height: 120,
-                                  width: 300,
-                                  color: MyCustomarColors.zhebZhuBaiPearl,
-                                  child: Column(
-                                    children: const <Widget>[
-                                      Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Icon(
-                                          Icons.assignment_turned_in,
-                                          color: MyCustomarColors.midasFingerGold,
-                                          size: 35,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(4.0),
-                                        child: Text(
-                                          "Kayıt DETAYI",
-                                          style: TextStyle(color: MyCustomarColors.benthicBlack, fontSize: 17),
-                                        ),
-                                      ),
-                                      Text(
-                                        "Are you sure to exit app?",
-                                        style: TextStyle(color: Colors.black38, fontSize: 13),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                //content: Text("data"),
-                                actions: <Widget>[
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: const Text(
-                                        'Geri...',
-                                        style: TextStyle(color: MyCustomarColors.benthicBlack, fontSize: 20),
-                                      )),
-                                ],
-                              ));
-                    },
-                    child: const Text(
-                      'Detay.',
-                      style: TextStyle(color: MyCustomarColors.benthicBlack, fontSize: 20),
-                    )),
-                TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text(
-                      'Tamam',
-                      style: TextStyle(color: MyCustomarColors.benthicBlack, fontSize: 20),
-                    )),
-              ],
-            ));
-  }
-
-  DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
-      value: item,
-      child: Text(
-        item,
-        style: const TextStyle(color: MyCustomarColors.midasFingerGold, fontSize: 14),
-      ));
 }
 
 class UrlBilgiContainer extends StatelessWidget {
@@ -251,7 +133,7 @@ class UrlBilgiContainer extends StatelessWidget {
           width: 300,
           child: Text(
             'Url bilgisi',
-            style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomarColors.zhebZhuBaiPearl),
+            style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomerColors.zhebZhuBaiPearl),
           ),
         ),
         Container(
@@ -291,15 +173,15 @@ class SaveTextField extends StatelessWidget {
       height: 55,
       margin: const EdgeInsets.only(left: 10, right: 10),
       child: TextField(
-        style: const TextStyle(fontSize: 14, color: MyCustomarColors.zhebZhuBaiPearl),
+        style: const TextStyle(fontSize: 14, color: MyCustomerColors.zhebZhuBaiPearl),
         controller: linkURLController,
         decoration: InputDecoration(
           labelText: "Link-URL",
-          labelStyle: const TextStyle(color: MyCustomarColors.zhebZhuBaiPearl),
+          labelStyle: const TextStyle(color: MyCustomerColors.zhebZhuBaiPearl),
           filled: true,
-          fillColor: MyCustomarColors.benthicBlack,
-          enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: MyCustomarColors.deepWater)),
-          focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: MyCustomarColors.deepWater)),
+          fillColor: MyCustomerColors.benthicBlack,
+          enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: MyCustomerColors.deepWater)),
+          focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: const BorderSide(color: MyCustomerColors.deepWater)),
         ),
         onChanged: (value) async {
           _LinkURL = value;
