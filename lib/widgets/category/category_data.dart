@@ -47,15 +47,15 @@ List<CategorysData> categorysdata = [
   ),
   CategorysData(
     names: 'Proje 1',
-    image: 'assets/images/link.png',
+    image: 'assets/images/folder.png',
   ),
   CategorysData(
     names: 'Proje 2',
-    image: 'assets/images/link.png',
+    image: 'assets/images/folder1.png',
   ),
   CategorysData(
     names: 'Proje 3',
-    image: 'assets/images/link.png',
+    image: 'assets/images/fire.png',
   ),
   CategorysData(
     names: 'Proje 4',

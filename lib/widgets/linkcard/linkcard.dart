@@ -47,15 +47,15 @@ class Linkcard extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Container(
             decoration: linkcarddecor(),
-            width: 350, //double.infinity,
-            height: url.toString() == '' || url.toString() == 'null' ? 135 : 220,
+            width: MediaQuery.of(context).size.width, //double.infinity,
+            height: image.toString() == 'Veri Yok' ? 150 : 220,
             child: Padding(
               padding: padingallten(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  url.toString() == '' || url.toString() == 'null' ? const DontImageCart() : ImageCart(image: image),
+                  image.toString() == 'Veri Yok' ? const DontImageCart() : ImageCart(image: image),
                   Linkcarttitle(title: title),
                   const SizedBox(
                     height: 4,
@@ -132,7 +132,7 @@ class ImageCart extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5),
       child: SizedBox(
-        width: 360,
+        width: MediaQuery.of(context).size.width,
         height: 150,
         child: Image.network(
           (image),
@@ -177,13 +177,18 @@ class DontImageCart extends StatelessWidget {
       ),
       child: Center(
           child: SizedBox(
-        width: 270,
-        height: 70,
-        child: Center(
-          child: Text(
-            dontimage,
-            style: dontimagestyle(),
-          ),
+        width: MediaQuery.of(context).size.width,
+        height: 90,
+        child: Column(
+          children: [
+            SizedBox(height: 60, child: Lottie.asset('assets/lotties/link.json')),
+            Center(
+              child: Text(
+                dontimage,
+                style: dontimagestyle(),
+              ),
+            ),
+          ],
         ),
       )),
     );

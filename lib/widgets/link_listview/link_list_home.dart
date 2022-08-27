@@ -36,19 +36,7 @@ class _LinkListHomeState extends State<LinkListHome> {
                 if (snapshot.hasData) {
                   // ignore: prefer_is_empty
                   if (snapshot.data?.docs.length == 0) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Lottie.asset(
-                          'assets/lotties/space.json',
-                          repeat: false,
-                        ),
-                        const Text(
-                          'Kayitli Link bulunmuyor!!!',
-                          style: TextStyle(fontSize: 18, color: MyCustomerColors.midasFingerGold),
-                        )
-                      ],
-                    );
+                    return const LoadingSpacee();
                   } else {
                     return ListView.builder(
                       itemCount: snapshot.data?.docs.length,
@@ -67,11 +55,38 @@ class _LinkListHomeState extends State<LinkListHome> {
                     );
                   }
                 } else {
-                  return const SizedBox();
+                  return const LoadingSpacee();
                 }
               },
             ),
           ),
+        )
+      ],
+    );
+  }
+}
+
+class LoadingSpacee extends StatelessWidget {
+  const LoadingSpacee({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          height: 200,
+          width: MediaQuery.of(context).size.width,
+          child: Lottie.asset(
+            'assets/lotties/space.json',
+            repeat: true,
+          ),
+        ),
+        const Text(
+          'Kayitli Link bulunmuyor!!!',
+          style: TextStyle(fontSize: 18, color: MyCustomerColors.midasFingerGold),
         )
       ],
     );

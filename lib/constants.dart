@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class MyCustomerColors {
@@ -38,3 +39,13 @@ class CustomSize {
   static const double iconSmall2x = 80;
   static const double categoryHeight = 70;
 }
+
+// ignore: non_constant_identifier_names
+CollectionReference RefUser = FirebaseFirestore.instance.collection('LinkApp.USER').doc('User').collection(emailController.text);
+
+// ignore: prefer_typing_uninitialized_variables
+var email;
+// ignore: prefer_typing_uninitialized_variables
+var password;
+final TextEditingController emailController = TextEditingController();
+final TextEditingController passwordController = TextEditingController();

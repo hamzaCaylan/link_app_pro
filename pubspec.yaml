@@ -43,6 +43,9 @@ dependencies:
   firebase_auth: ^3.6.4
   cloud_firestore: ^3.4.5
 
+  #flutter.dev
+  shared_preferences: ^2.0.15
+
   #Url getter
   metadata_fetch: ^0.4.1
   url_launcher: ^6.0.12
@@ -92,7 +95,11 @@ flutter:
     - assets/images/10.png
     - assets/images/11.png
     - assets/images/12.png
+    - assets/images/fire.png
+    - assets/images/folder.png
+    - assets/images/folder1.png
     - assets/lotties/
+    
 
 
 

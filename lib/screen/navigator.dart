@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import '../constants.dart';
 import 'homepage.dart';
@@ -25,7 +27,7 @@ class _NavigatorBarState extends State<NavigatorBar> {
         children: [
           NavigationRail(
             backgroundColor: MyCustomerColors.benthicBlack,
-            minWidth: MediaQuery.of(context).size.width * 0.116,
+            minWidth: MediaQuery.of(context).size.width * 0.11,
             groupAlignment: 0.75,
             selectedIndex: _selectedIndex,
             onDestinationSelected: (int index) {
@@ -90,11 +92,36 @@ class _NavigatorBarState extends State<NavigatorBar> {
   buildPages() {
     switch (indext) {
       case 0:
-        return const MyHomePage(); //MyHomePage();
+        return const MyPages(
+          body: MyHomePage(),
+        ); //MyHomePage();
       case 1:
-        return const SavePage(); //SavePage();
+        return const MyPages(body: SavePage()); //SavePage();
       case 2:
-        return const Profile(); //Profil();
+        return const MyPages(body: Profile()); //Profil();
     }
+  }
+}
+
+class MyPages extends StatelessWidget {
+  const MyPages({Key? key, required this.body}) : super(key: key);
+  final Widget body;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: MyCustomerColors.benthicBlack,
+        child: Stack(
+          children: [
+            Container(
+              decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/00.webp'), fit: BoxFit.cover)),
+            ),
+            const Positioned(top: -350, left: 70, child: SizedBox()),
+            BackdropFilter(filter: ImageFilter.blur(sigmaX: 1, sigmaY: 4), child: body),
+          ],
+        ),
+      ),
+    );
   }
 }

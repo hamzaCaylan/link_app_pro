@@ -13,102 +13,96 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: MyCustomerColors.opicswallowBlue,
-      body: Container(
-        color: MyCustomerColors.benthicBlack,
-        child: Stack(
-          children: [
-            Container(
-              decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/00.webp'), fit: BoxFit.cover)),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Spacer(
+            flex: 3,
+          ),
+          Container(
+            decoration: const BoxDecoration(
+                color: MyCustomerColors.opicswallowBlue,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30.0),
+                    bottomLeft: Radius.circular(30.0),
+                    bottomRight: Radius.circular(30.0),
+                    topRight: Radius.circular(30.0))),
+            width: 180,
+            height: 200,
+            child: Column(
+              children: [
+                const Spacer(),
+                Image.network(
+                  'https://www.awicons.com/free-icons/download/application-icons/dragon-soft-icons-by-artua.com/png/512/User.png',
+                  height: 150,
+                  width: 150,
+                ),
+                const Spacer(),
+                const Text(
+                  'email',
+                  style: TextStyle(color: MyCustomerColors.midasFingerGold),
+                ),
+                const Spacer(),
+              ],
             ),
-            SizedBox(
-              width: 360,
-              height: 700,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                        color: MyCustomerColors.opicswallowBlue,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30.0),
-                            bottomLeft: Radius.circular(30.0),
-                            bottomRight: Radius.circular(30.0),
-                            topRight: Radius.circular(30.0))),
-                    width: 180,
-                    height: 200,
-                    child: Column(
-                      children: [
-                        const Spacer(),
-                        Image.network(
-                          'https://www.awicons.com/free-icons/download/application-icons/dragon-soft-icons-by-artua.com/png/512/User.png',
-                          height: 150,
-                          width: 150,
-                        ),
-                        const Spacer(),
-                        const Text(
-                          'email',
-                          style: TextStyle(color: MyCustomerColors.midasFingerGold),
-                        ),
-                        const Spacer(),
-                      ],
+          ),
+          const Spacer(),
+          MyButton(
+            title: 'Profil Ayar',
+            buttonIcon: const Icon(Icons.settings, size: 24.0, color: MyCustomerColors.midasFingerGold),
+            buttonColor: MyCustomerColors.benthicBlack,
+            onPress: () {
+              showDialog(
+                context: context,
+                builder: (context) => MyAlertWidget(
+                  title: '404 error',
+                  undertitle: 'Lutfen internet erisimin kotrol edin.',
+                  luttie: 'assets/lotties/404.json',
+                  repeat: true,
+                  onPress: () {
+                    Navigator.pop(context);
+                  },
+                  onPressTwoSee: false,
+                  onPressTwo: () {},
+                ),
+              );
+              /*Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const rsagele(
+                      title: 'Kayıt Başarı ile alındı',
+                      undertitle: 'Are you sure to exit app?',
+                      luttie: 'https://assets3.lottiefiles.com/packages/lf20_0jomt6wm.json',
                     ),
                   ),
-                  MyButton(
-                    title: 'Profil Ayar',
-                    buttonIcon: const Icon(Icons.settings, size: 24.0, color: MyCustomerColors.midasFingerGold),
-                    buttonColor: MyCustomerColors.benthicBlack,
-                    onPress: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) => MyAlertWidget(
-                          title: '404 error',
-                          undertitle: 'Lutfen internet erisimin kotrol edin.',
-                          luttie: 'assets/lotties/404.json',
-                          repeat: true,
-                          onPress: () {
-                            Navigator.pop(context);
-                          },
-                          onPressTwoSee: false,
-                          onPressTwo: () {},
-                        ),
-                      );
-                      /*Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const rsagele(
-                            title: 'Kayıt Başarı ile alındı',
-                            undertitle: 'Are you sure to exit app?',
-                            luttie: 'https://assets3.lottiefiles.com/packages/lf20_0jomt6wm.json',
-                          ),
-                        ),
-                      );*/ //
-                    },
-                  ),
-                  MyButton(
-                    title: 'Paylas',
-                    buttonIcon: const Icon(Icons.share_arrival_time_rounded, size: 24.0, color: MyCustomerColors.midasFingerGold),
-                    buttonColor: MyCustomerColors.benthicBlack,
-                    onPress: () {},
-                  ),
-                  MyButton(
-                    title: 'Oturumu Kapat',
-                    buttonIcon: const Icon(Icons.exit_to_app_outlined, size: 24.0, color: MyCustomerColors.midasFingerGold),
-                    buttonColor: MyCustomerColors.benthicBlack,
-                    onPress: () {},
-                  ),
-                  MyButton(
-                    title: 'Yeniden Baslat',
-                    buttonIcon: const Icon(Icons.restart_alt, size: 24.0, color: MyCustomerColors.midasFingerGold),
-                    buttonColor: MyCustomerColors.benthicBlack,
-                    onPress: () {},
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+                );*/ //
+            },
+          ),
+          MyButton(
+            title: 'Paylas',
+            buttonIcon: const Icon(Icons.share_arrival_time_rounded, size: 24.0, color: MyCustomerColors.midasFingerGold),
+            buttonColor: MyCustomerColors.benthicBlack,
+            onPress: () {},
+          ),
+          MyButton(
+            title: 'Oturumu Kapat',
+            buttonIcon: const Icon(Icons.exit_to_app_outlined, size: 24.0, color: MyCustomerColors.midasFingerGold),
+            buttonColor: MyCustomerColors.benthicBlack,
+            onPress: () {},
+          ),
+          MyButton(
+            title: 'Yeniden Baslat',
+            buttonIcon: const Icon(Icons.restart_alt, size: 24.0, color: MyCustomerColors.midasFingerGold),
+            buttonColor: MyCustomerColors.benthicBlack,
+            onPress: () {},
+          ),
+          const Spacer(
+            flex: 2,
+          ),
+        ],
       ),
     );
   }

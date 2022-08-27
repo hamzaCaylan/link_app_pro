@@ -18,59 +18,55 @@ class UrlContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
-          height: 8,
-        ),
-        Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 10, right: 10, top: 8, bottom: 3),
-              child: SizedBox(
-                width: 300,
-                child: Text(
-                  'Resim',
-                  style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomerColors.zhebZhuBaiPearl),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10, right: 10),
-              child: Container(
-                decoration: const BoxDecoration(
-                    color: Colors.white10,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10.0),
-                        bottomLeft: Radius.circular(10.0),
-                        bottomRight: Radius.circular(10.0),
-                        topRight: Radius.circular(10.0))),
-                width: 330,
-                height: 190,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    width: 300,
-                    height: 150,
-                    decoration: BoxDecoration(image: DecorationImage(image: NetworkImage(linkImage), fit: BoxFit.cover)),
+        linkImage.toString() == 'Veri Yok'
+            ? const SizedBox()
+            : Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10, top: 8, bottom: 3),
+                    child: SizedBox(
+                      width: 300,
+                      child: Text(
+                        'Resim',
+                        style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomerColors.zhebZhuBaiPearl),
+                      ),
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
+                    child: Container(
+                      decoration: const BoxDecoration(
+                          color: Colors.white10,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10.0),
+                              bottomLeft: Radius.circular(10.0),
+                              bottomRight: Radius.circular(10.0),
+                              topRight: Radius.circular(10.0))),
+                      width: 330,
+                      height: 190,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: 300,
+                          height: 150,
+                          decoration: BoxDecoration(image: DecorationImage(image: NetworkImage(linkImage), fit: BoxFit.cover)),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
         const SizedBox(
           height: 10,
         ),
         Column(
           children: [
-            const SizedBox(
-              width: 300,
-              child: Text(
-                'Bilgiler ',
-                style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomerColors.zhebZhuBaiPearl),
-              ),
+            const Text(
+              'Bilgiler ',
+              style: TextStyle(fontFamily: 'sHeader', fontSize: 16, color: MyCustomerColors.zhebZhuBaiPearl),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(5.0),
               child: Container(
                 decoration: const BoxDecoration(
                     color: Colors.white10,
