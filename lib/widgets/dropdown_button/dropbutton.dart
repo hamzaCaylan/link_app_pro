@@ -15,6 +15,7 @@ class _DropDownButtonState extends State<DropDownButton> {
   final items = [
     'Haber',
     'Bilim',
+    'Kamp',
     'Arastirma',
     'Kitap',
     'Hobi',
@@ -24,7 +25,6 @@ class _DropDownButtonState extends State<DropDownButton> {
     'Film/Music',
     'Proje 1',
     'Proje 2',
-    'Proje 3',
     'Proje 4',
     'Proje 5',
   ];

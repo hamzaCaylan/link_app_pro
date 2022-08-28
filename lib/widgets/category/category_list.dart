@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'category_add.dart';
 import 'category_card.dart';
 import 'category_constants.dart';
 import 'category_data.dart';
@@ -59,9 +60,7 @@ class CategoryScrollview extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          const SizedBox(
-            width: 2,
-          ),
+          const CategoryAdd(),
           for (int i = 0; i < categorysdata.length; i++) CategoryCard(categorysdata: categorysdata[i]),
         ],
       ),

@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -6,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constants.dart';
 import '../../widgets/button/my_button_two.dart';
+import '../navigator.dart';
 import 'auth_services.dart';
 import 'sing_page.dart';
 
@@ -155,16 +155,17 @@ class _LoginPageState extends State<LoginPage> {
                       MyButtonTwo(
                         title: 'Oturum AC',
                         onPress: () {
-                          if (emailController.text.length >= 10 && passwordController.text.length >= 6) {
+                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const NavigatorBar()));
+
+                          /* if (emailController.text.length >= 10 && passwordController.text.length >= 6) {
                             setState(() {
                               showSpinner = true;
                             });
                             try {
                               _authService.signIn(emailController.text, passwordController.text).then((value) {
-                                /*return Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                        builder: (context) => Bot_()),
-                                  );*/
+                                return Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context) => const NavigatorBar()),
+                                );
                               });
                               setState(() {
                                 showSpinner = false;
@@ -219,7 +220,7 @@ class _LoginPageState extends State<LoginPage> {
                                             )),
                                       ],
                                     ));
-                          }
+                          }*/
                         },
                       ),
                       MyButtonTwo(

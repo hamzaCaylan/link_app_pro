@@ -17,6 +17,10 @@ List<CategorysData> categorysdata = [
     image: 'assets/images/10.png',
   ),
   CategorysData(
+    names: 'Kamp',
+    image: 'assets/images/fire.png',
+  ),
+  CategorysData(
     names: 'Arastirma',
     image: 'assets/images/9.png',
   ),
@@ -52,10 +56,6 @@ List<CategorysData> categorysdata = [
   CategorysData(
     names: 'Proje 2',
     image: 'assets/images/folder1.png',
-  ),
-  CategorysData(
-    names: 'Proje 3',
-    image: 'assets/images/fire.png',
   ),
   CategorysData(
     names: 'Proje 4',
