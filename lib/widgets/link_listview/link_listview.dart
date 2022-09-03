@@ -14,12 +14,27 @@ class LinkListDetail extends StatefulWidget {
 
 class _LinkListDetailState extends State<LinkListDetail> {
   final String emaill = 'hamza@gmail.com';
+  bool searchSee = false;
+  String title = '*';
+  TextEditingController titleController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyCustomerColors.benthicBlack,
         title: Text(widget.category),
+        actions: [
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  searchSee = !searchSee;
+                });
+              },
+              icon: const Icon(
+                Icons.search,
+                color: MyCustomerColors.midasFingerGold,
+              )),
+        ],
       ),
       body: Container(
         color: MyCustomerColors.deepWater,
@@ -30,12 +45,21 @@ class _LinkListDetailState extends State<LinkListDetail> {
             ),
             StreamBuilder(
               //stream: FirebaseFirestore.instance.collection('Link').doc(emaill).collection('Link').snapshots(), //
-              stream: FirebaseFirestore.instance
-                  .collection('Link')
-                  .doc(emaill)
-                  .collection('Link')
-                  .where("Link Kategori ", isEqualTo: widget.category)
-                  .snapshots(),
+              //stream: FirebaseFirestore.instance.collection('Doc-MAK').doc("$emaill").collection('Yayınlar').where("Yayın Alanı",isEqualTo: baslik).snapshots(),
+
+              stream: searchSee == true
+                  ? FirebaseFirestore.instance
+                      .collection('Link')
+                      .doc(emaill)
+                      .collection('Link')
+                      .where("Link Baslik", isGreaterThanOrEqualTo: title)
+                      .snapshots()
+                  : FirebaseFirestore.instance
+                      .collection('Link')
+                      .doc(emaill)
+                      .collection('Link')
+                      .where("Link Kategori ", isEqualTo: widget.category)
+                      .snapshots(),
               builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasData) {
                   // ignore: prefer_is_empty
@@ -63,6 +87,27 @@ class _LinkListDetailState extends State<LinkListDetail> {
                 }
               },
             ),
+            searchSee == true
+                ? Container(
+                    color: MyCustomerColors.deepWater.withOpacity(0.5),
+                    child: Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: TextField(
+                        style: const TextStyle(fontSize: 15, color: MyCustomerColors.midasFingerGold),
+                        controller: titleController,
+                        decoration: const InputDecoration(
+                          hintText: 'Link Baslik....',
+                          hintStyle: TextStyle(fontSize: 12, color: MyCustomerColors.midasFingerGold),
+                          filled: true,
+                        ),
+                        onChanged: (context) {
+                          setState(() {
+                            title = titleController.text.toString();
+                          });
+                        },
+                      ),
+                    ))
+                : const SizedBox(),
           ],
         ),
       ),

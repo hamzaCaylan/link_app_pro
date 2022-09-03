@@ -3,7 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:lottie/lottie.dart';
 import '../../constants.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:share_plus/share_plus.dart';
 import '../showmessage/show_message.dart';
 
 String dontimage = 'Kayitli resim bulunamadi';
@@ -27,10 +27,12 @@ class Linkcard extends StatelessWidget {
           )
         ],
       ),
-      endActionPane: const ActionPane(
-        motion: DrawerMotion(),
+      endActionPane: ActionPane(
+        motion: const DrawerMotion(),
         children: [
-          SlidableShare(),
+          SlidableShare(
+            title: url,
+          ),
         ],
       ),
       child: GestureDetector(
@@ -202,13 +204,15 @@ class DontImageCart extends StatelessWidget {
 class SlidableShare extends StatelessWidget {
   const SlidableShare({
     super.key,
+    required this.title,
   });
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return SlidableAction(
       onPressed: (context) {
-        // Share.share('Link Baslik' + " " + 'Link URL');
+        Share.share(title);
       },
       backgroundColor: const Color(0xff154467),
       foregroundColor: Colors.white,
