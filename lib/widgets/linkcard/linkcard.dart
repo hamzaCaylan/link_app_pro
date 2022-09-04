@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:lottie/lottie.dart';
@@ -10,10 +11,11 @@ String dontimage = 'Kayitli resim bulunamadi';
 String dontimageicon = 'assets/images/link.png';
 
 class Linkcard extends StatelessWidget {
-  const Linkcard({Key? key, required this.title, required this.url, required this.image}) : super(key: key);
+  const Linkcard({Key? key, required this.title, required this.url, required this.image, required this.id}) : super(key: key);
   final String title;
   final String url;
   final String image;
+  final String id;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class Linkcard extends StatelessWidget {
         children: [
           SlidableDelete(
             title: title,
+            id: id,
           )
         ],
       ),
@@ -155,12 +158,6 @@ class ImageCart extends StatelessWidget {
     );
   }
 }
-/*
-CircularProgressIndicator(
-                value:
-                    loadingProgress.expectedTotalBytes != null ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes! : null,
-              )
-*/
 
 class DontImageCart extends StatelessWidget {
   const DontImageCart({Key? key}) : super(key: key);
@@ -223,11 +220,14 @@ class SlidableShare extends StatelessWidget {
 }
 
 class SlidableDelete extends StatelessWidget {
-  const SlidableDelete({
+  SlidableDelete({
     super.key,
     required this.title,
+    required this.id,
   });
   final String title;
+  final String id;
+  var refFireBase = FirebaseFirestore.instance.collection('Link').doc('hamza@gmail.com').collection('Link');
 
   @override
   Widget build(BuildContext context) {
@@ -245,21 +245,43 @@ class SlidableDelete extends StatelessWidget {
             },
             onPressTwoSee: true,
             onPressTwo: () {
+              refFireBase
+                  .doc(id) // <-- Doc ID to be deleted.
+                  .delete() // <-- Delete
+                  .then(
+                    (_) => showDialog(
+                      context: context,
+                      builder: (context) => MyAlertWidget(
+                        title: title,
+                        undertitle: 'Link silindi.',
+                        luttie: 'assets/lotties/delete.json',
+                        repeat: false,
+                        onPress: () {
+                          Navigator.pop(context);
+                        },
+                        onPressTwoSee: false,
+                        onPressTwo: () {},
+                      ),
+                    ),
+                  )
+                  .catchError(
+                    (error) => showDialog(
+                      context: context,
+                      builder: (context) => MyAlertWidget(
+                        title: title,
+                        undertitle: 'Link silinemedi.',
+                        luttie: 'assets/lotties/errordelete.json',
+                        repeat: false,
+                        onPress: () {
+                          Navigator.pop(context);
+                        },
+                        onPressTwoSee: false,
+                        onPressTwo: () {},
+                      ),
+                    ),
+                  );
+
               Navigator.pop(context);
-              showDialog(
-                context: context,
-                builder: (context) => MyAlertWidget(
-                  title: title,
-                  undertitle: 'Link silindi.',
-                  luttie: 'assets/lotties/delete.json',
-                  repeat: false,
-                  onPress: () {
-                    Navigator.pop(context);
-                  },
-                  onPressTwoSee: false,
-                  onPressTwo: () {},
-                ),
-              );
             },
           ),
         );

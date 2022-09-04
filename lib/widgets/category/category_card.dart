@@ -26,9 +26,10 @@ class CategoryCard extends StatelessWidget {
           onTap: () async {
             Navigator.of(context).push(
               MaterialPageRoute(
-                  builder: (context) => LinkListDetail(
-                        category: categorysdata.names,
-                      )),
+                builder: (context) => LinkListDetail(
+                  category: categorysdata.names,
+                ),
+              ),
             );
           },
         ),

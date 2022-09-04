@@ -21,35 +21,38 @@ class _NavigatorBarState extends State<NavigatorBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: MyCustomerColors.benthicBlack,
-      body: Row(
-        children: [
-          NavigationRail(
-            backgroundColor: MyCustomerColors.benthicBlack,
-            minWidth: MediaQuery.of(context).size.width * 0.11,
-            groupAlignment: 0.75,
-            selectedIndex: _selectedIndex,
-            onDestinationSelected: (int index) {
-              setState(
-                () {
-                  _selectedIndex = index;
-                  indext = index;
-                  pence = index;
-                },
-              );
-            },
-            labelType: NavigationRailLabelType.all,
-            selectedLabelTextStyle: selecttextstyle(),
-            unselectedLabelTextStyle: unselecttextstyle(),
-            destinations: [
-              buildRotatedTextRailDestinations('Linkler', padding),
-              buildRotatedTextRailDestinations("Link Kayit", padding),
-              buildRotatedTextRailDestinations("Profil", padding),
-            ],
-          ),
-          Expanded(child: buildPages()),
-        ],
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: MyCustomerColors.benthicBlack,
+        body: Row(
+          children: [
+            NavigationRail(
+              backgroundColor: MyCustomerColors.benthicBlack,
+              minWidth: MediaQuery.of(context).size.width * 0.11,
+              groupAlignment: 0.75,
+              selectedIndex: _selectedIndex,
+              onDestinationSelected: (int index) {
+                setState(
+                  () {
+                    _selectedIndex = index;
+                    indext = index;
+                    pence = index;
+                  },
+                );
+              },
+              labelType: NavigationRailLabelType.all,
+              selectedLabelTextStyle: selecttextstyle(),
+              unselectedLabelTextStyle: unselecttextstyle(),
+              destinations: [
+                buildRotatedTextRailDestinations('Linkler', padding),
+                buildRotatedTextRailDestinations("Link Kayit", padding),
+                buildRotatedTextRailDestinations("Profil", padding),
+              ],
+            ),
+            Expanded(child: buildPages()),
+          ],
+        ),
       ),
     );
   }

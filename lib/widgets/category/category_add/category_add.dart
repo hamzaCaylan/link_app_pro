@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import '../showmessage/show_message.dart';
-import 'category_constants.dart';
+import '../../showmessage/show_message.dart';
+import '../category_constants.dart';
 import 'package:http/http.dart' as http;
+
+import 'category_add_page.dart';
 
 String jsondata =
     'https://firebasestorage.googleapis.com/v0/b/linkapp-17.appspot.com/o/category.json?alt=media&token=5835139a-0655-4248-9b8d-acf74fd29ae3';
@@ -51,7 +53,10 @@ class CategoryAdd extends StatelessWidget {
             ],
           ),
           onTap: () async {
-            addMessage(context);
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const CategoryAddPage()),
+            );
+            //  addMessage(context);
           },
         ),
       ),
@@ -96,54 +101,4 @@ class CategoryAdd extends StatelessWidget {
       fontSize: CategorySize.titleSmall,
     );
   }
-}
-
-class Deneme extends StatefulWidget {
-  const Deneme({Key? key}) : super(key: key);
-
-  @override
-  State<Deneme> createState() => _DenemeState();
-}
-
-class _DenemeState extends State<Deneme> {
-  Future getCategoryData() async {
-    var response = await http.get(Uri.https(jsondata));
-    var jsonData = jsonDecode(response.body);
-    List<Categoryler> categorys = [];
-
-    for (var u in jsonData) {
-      Categoryler category = Categoryler(u['names'], u['icon']);
-      categorys.add(category);
-    }
-    return categorys;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Card(
-        child: FutureBuilder(
-            future: getCategoryData(),
-            builder: (context, snapshot) {
-              if (snapshot.data == null) {
-                return const Text('data');
-              } else {
-                return ListView.builder(
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (context, i) {
-                    return ListTile(
-                      title: Text(snapshot.data.name),
-                    );
-                  },
-                );
-              }
-            }),
-      ),
-    );
-  }
-}
-
-class Categoryler {
-  final String name, icon;
-  Categoryler(this.name, this.icon);
 }

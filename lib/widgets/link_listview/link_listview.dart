@@ -70,6 +70,7 @@ class _LinkListDetailState extends State<LinkListDetail> {
                       itemCount: snapshot.data?.docs.length,
                       itemBuilder: (context, index) {
                         var link = snapshot.data?.docs[index];
+                        var linkid = snapshot.data?.docs[index].id.toString();
                         var title = link!['Link Baslik'].toString();
                         var image = link['Link Image'].toString();
                         var url = link['Link URL'].toString();
@@ -77,6 +78,7 @@ class _LinkListDetailState extends State<LinkListDetail> {
                           title: title,
                           image: image,
                           url: url,
+                          id: linkid!,
                         );
                         //
                       },

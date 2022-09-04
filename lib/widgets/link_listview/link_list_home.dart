@@ -13,6 +13,7 @@ class LinkListHome extends StatefulWidget {
 
 class _LinkListHomeState extends State<LinkListHome> {
   final String emaill = 'hamza@gmail.com';
+  var refFireBase = FirebaseFirestore.instance.collection('Link').doc('hamza@gmail.com').collection('Link');
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,7 +32,7 @@ class _LinkListHomeState extends State<LinkListHome> {
             decoration: const BoxDecoration(color: Colors.black12, borderRadius: BorderRadius.all(Radius.circular(10))),
             height: 350,
             child: StreamBuilder(
-              stream: FirebaseFirestore.instance.collection('Link').doc(emaill).collection('Link').snapshots(), //
+              stream: refFireBase.snapshots(), //
               builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasData) {
                   // ignore: prefer_is_empty
@@ -42,6 +43,7 @@ class _LinkListHomeState extends State<LinkListHome> {
                       itemCount: snapshot.data?.docs.length,
                       itemBuilder: (context, index) {
                         var link = snapshot.data?.docs[index];
+                        var linkid = snapshot.data?.docs[index].id.toString();
                         var title = link!['Link Baslik'].toString();
                         var image = link['Link Image'].toString();
                         var url = link['Link URL'].toString();
@@ -49,6 +51,7 @@ class _LinkListHomeState extends State<LinkListHome> {
                           title: title,
                           image: image,
                           url: url,
+                          id: linkid!,
                         );
                         //
                       },
