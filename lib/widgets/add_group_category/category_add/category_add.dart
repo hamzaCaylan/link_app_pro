@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 import '../../showmessage/show_message.dart';
 import '../../category/category_constants.dart';
 
-import '../group_add/group_add_page.dart';
-
-String jsondata =
-    'https://firebasestorage.googleapis.com/v0/b/linkapp-17.appspot.com/o/category.json?alt=media&token=5835139a-0655-4248-9b8d-acf74fd29ae3';
-
-class CategoryAdd extends StatelessWidget {
-  const CategoryAdd({Key? key}) : super(key: key);
-
-  final String add = 'Kategori Ekle';
+class CategoryButton extends StatelessWidget {
+  const CategoryButton({Key? key, required this.title, required this.icon, required this.onPress}) : super(key: key);
+  final String title;
+  final String icon;
+  final VoidCallback onPress;
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +16,14 @@ class CategoryAdd extends StatelessWidget {
         decoration: categoryDecoration(),
         width: MediaQuery.of(context).size.width * 0.35, //double.infinity,
         child: InkWell(
+          onTap: onPress,
           child: Column(
             children: [
               const Spacer(),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Image.asset(
-                  'assets/images/add.png',
+                  'assets/images/$icon',
                   color: CategoryColors.midasFingerGold,
                 ),
               ),
@@ -43,19 +40,13 @@ class CategoryAdd extends StatelessWidget {
                   child: Align(
                       alignment: Alignment.center,
                       child: Text(
-                        add,
+                        title,
                         style: categorytextstyle(),
                       )),
                 ),
               ),
             ],
           ),
-          onTap: () async {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const GroupAddPage()), //CategoryAddPage
-            );
-            //  addMessage(context);
-          },
         ),
       ),
     );

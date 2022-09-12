@@ -7,7 +7,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:share_plus/share_plus.dart';
 import '../showmessage/show_message.dart';
 
-String dontimage = 'Kayitli resim bulunamadi';
 String dontimageicon = 'assets/images/link.png';
 
 class Linkcard extends StatelessWidget {
@@ -60,7 +59,12 @@ class Linkcard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  image.toString() == 'Veri Yok' ? const DontImageCart() : ImageCart(image: image),
+                  image.toString() == 'Veri Yok'
+                      ? const DontImageCart(
+                          iconrepead: true,
+                          title: 'Kayitli resim bulunamadi',
+                        )
+                      : ImageCart(image: image),
                   Linkcarttitle(title: title),
                   const SizedBox(
                     height: 4,
@@ -160,7 +164,9 @@ class ImageCart extends StatelessWidget {
 }
 
 class DontImageCart extends StatelessWidget {
-  const DontImageCart({Key? key}) : super(key: key);
+  const DontImageCart({Key? key, required this.iconrepead, required this.title}) : super(key: key);
+  final bool iconrepead;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -180,10 +186,16 @@ class DontImageCart extends StatelessWidget {
         height: 90,
         child: Column(
           children: [
-            SizedBox(height: 60, child: Lottie.asset('assets/lotties/link.json')),
+            SizedBox(
+              height: 60,
+              child: Lottie.asset(
+                'assets/lotties/link.json',
+                repeat: iconrepead,
+              ),
+            ),
             Center(
               child: Text(
-                dontimage,
+                title,
                 style: dontimagestyle(),
               ),
             ),
