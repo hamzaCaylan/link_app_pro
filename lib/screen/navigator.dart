@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import '../constants.dart';
+import '../widgets/add_group_category/group_add/test.dart';
 import 'homepage.dart';
 import 'profile.dart';
 import 'save_page.dart';
@@ -48,6 +49,7 @@ class _NavigatorBarState extends State<NavigatorBar> {
                 buildRotatedTextRailDestinations('Linkler', padding),
                 buildRotatedTextRailDestinations("Link Kayit", padding),
                 buildRotatedTextRailDestinations("Profil", padding),
+                buildRotatedTextRailDestinations("Gruplar", padding),
               ],
             ),
             Expanded(child: buildPages()),
@@ -102,6 +104,8 @@ class _NavigatorBarState extends State<NavigatorBar> {
         return const MyPages(body: SavePage()); //SavePage();
       case 2:
         return const MyPages(body: Profile()); //Profil();
+      case 3:
+        return const MyPages(body: Test());
     }
   }
 }

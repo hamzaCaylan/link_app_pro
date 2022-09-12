@@ -1,33 +1,35 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../../../screen/navigator.dart';
 import '../../button/my_button.dart';
-import '../../showmessage/show_message.dart';
-import '../category_constants.dart';
+import '../../category/category_constants.dart';
 
-class CategoryAddPage extends StatelessWidget {
-  const CategoryAddPage({Key? key}) : super(key: key);
+final TextEditingController groupyName = TextEditingController();
+
+class GroupAddPage extends StatelessWidget {
+  const GroupAddPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Add New Category'), backgroundColor: CategoryColors.opicswallowBlue),
+      appBar: AppBar(title: const Text('Grup olustur'), backgroundColor: CategoryColors.opicswallowBlue),
       backgroundColor: CategoryColors.benthicBlack,
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(
-              height: 150,
+            const Spacer(
+              flex: 4,
             ),
             Container(
               height: 55,
               margin: textfieldmargin(),
               child: TextField(
                 style: const TextStyle(fontSize: 14, color: CategoryColors.midasFingerGold),
-                //controller: controller,
+                controller: groupyName,
                 decoration: InputDecoration(
-                  labelText: 'Categori Baslik',
+                  labelText: 'Grup Baslik',
                   labelStyle: const TextStyle(color: CategoryColors.zhebZhuBaiPearl),
                   filled: true,
                   fillColor: CategoryColors.opicswallowBlue,
@@ -38,39 +40,35 @@ class CategoryAddPage extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             MyButton(
               title: 'Olustur',
               onPress: () {
-                Navigator.pop(context);
-                addMessage(context);
+                String id = FirebaseFirestore.instance.collection('Grup').doc().id;
+                FirebaseFirestore.instance.collection('Grup').doc(id).set({
+                  'Group title': groupyName.text.toString(),
+                  'id': id,
+                });
+                Map<String, dynamic> demoData = {
+                  'Group title': groupyName.text.toString(),
+                  'id': id,
+                };
+                CollectionReference collectionReference = FirebaseFirestore.instance.collection('Link').doc('hamza@gmail.com').collection('Grup');
+                collectionReference.add(demoData);
+                //Navigator.pop(context);
               },
               buttonColor: Colors.black,
               buttonIcon: const Icon(
                 Icons.create,
                 color: CategoryColors.midasFingerGold,
               ),
-            )
+            ),
+            const Spacer(
+              flex: 10,
+            ),
           ],
         ),
-      ),
-    );
-  }
-
-  Future<dynamic> addMessage(BuildContext context) {
-    return showDialog(
-      context: context,
-      builder: (context) => MyAlertWidget(
-        title: 'Yeni kategory eklendi',
-        undertitle: '.....Adli yeni kategori eklendi BOSSSS ',
-        luttie: 'assets/lotties/ok.json',
-        repeat: false,
-        onPress: () {
-          Navigator.pop(context);
-        },
-        onPressTwoSee: false,
-        onPressTwo: () {},
       ),
     );
   }

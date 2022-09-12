@@ -1,10 +1,8 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../../showmessage/show_message.dart';
-import '../category_constants.dart';
-import 'package:http/http.dart' as http;
+import '../../category/category_constants.dart';
 
-import 'category_add_page.dart';
+import '../group_add/group_add_page.dart';
 
 String jsondata =
     'https://firebasestorage.googleapis.com/v0/b/linkapp-17.appspot.com/o/category.json?alt=media&token=5835139a-0655-4248-9b8d-acf74fd29ae3';
@@ -54,7 +52,7 @@ class CategoryAdd extends StatelessWidget {
           ),
           onTap: () async {
             Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const CategoryAddPage()),
+              MaterialPageRoute(builder: (context) => const GroupAddPage()), //CategoryAddPage
             );
             //  addMessage(context);
           },

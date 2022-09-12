@@ -219,6 +219,7 @@ class SlidableShare extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class SlidableDelete extends StatelessWidget {
   SlidableDelete({
     super.key,
@@ -247,41 +248,22 @@ class SlidableDelete extends StatelessWidget {
             onPressTwo: () {
               refFireBase
                   .doc(id) // <-- Doc ID to be deleted.
-                  .delete() // <-- Delete
-                  .then(
-                    (_) => showDialog(
-                      context: context,
-                      builder: (context) => MyAlertWidget(
-                        title: title,
-                        undertitle: 'Link silindi.',
-                        luttie: 'assets/lotties/delete.json',
-                        repeat: false,
-                        onPress: () {
-                          Navigator.pop(context);
-                        },
-                        onPressTwoSee: false,
-                        onPressTwo: () {},
-                      ),
-                    ),
-                  )
-                  .catchError(
-                    (error) => showDialog(
-                      context: context,
-                      builder: (context) => MyAlertWidget(
-                        title: title,
-                        undertitle: 'Link silinemedi.',
-                        luttie: 'assets/lotties/errordelete.json',
-                        repeat: false,
-                        onPress: () {
-                          Navigator.pop(context);
-                        },
-                        onPressTwoSee: false,
-                        onPressTwo: () {},
-                      ),
-                    ),
-                  );
-
+                  .delete();
               Navigator.pop(context);
+              showDialog(
+                context: context,
+                builder: (context) => MyAlertWidget(
+                  title: title,
+                  undertitle: 'Link silindi.',
+                  luttie: 'assets/lotties/delete.json',
+                  repeat: false,
+                  onPress: () {
+                    Navigator.pop(context);
+                  },
+                  onPressTwoSee: false,
+                  onPressTwo: () {},
+                ),
+              );
             },
           ),
         );

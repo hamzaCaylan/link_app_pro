@@ -52,9 +52,11 @@ class _MyAlertWidgetState extends State<MyAlertWidget> {
           height: 20,
           child: Column(
             children: <Widget>[
-              Text(
-                widget.undertitle,
-                style: TextStyle(color: MyCustomerColors.midasFingerGold.withOpacity(0.9), fontSize: 13),
+              Expanded(
+                child: Text(
+                  widget.undertitle,
+                  style: TextStyle(color: MyCustomerColors.midasFingerGold.withOpacity(0.9), fontSize: 13),
+                ),
               ),
             ],
           ),
