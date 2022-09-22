@@ -46,6 +46,7 @@ class _GroupListState extends State<GroupList> {
                       itemCount: snapshot.data?.docs.length,
                       itemBuilder: (context, index) {
                         var group = snapshot.data?.docs[index];
+                        var linkid = snapshot.data?.docs[index].id.toString();
                         var grouptitle = group!['Group title'].toString();
                         var id = group['id'].toString();
                         return InkWell(
@@ -66,8 +67,9 @@ class _GroupListState extends State<GroupList> {
                               motion: const DrawerMotion(),
                               children: [
                                 SlidableDelete(
-                                  title: 'title',
-                                  id: 'id',
+                                  title: grouptitle,
+                                  id: linkid.toString(),
+                                  refFireBase: FirebaseFirestore.instance.collection('Link').doc(emaill).collection('Grup'),
                                 )
                               ],
                             ),

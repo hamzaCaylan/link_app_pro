@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import '../../../main.dart';
 import '../../button/my_button.dart';
 import '../../showmessage/show_message.dart';
 import '../../category/category_constants.dart';
 
-String? gender;
 final TextEditingController categoryName = TextEditingController();
 // ignore: prefer_typing_uninitialized_variables
 var a;

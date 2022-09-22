@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import '../../constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share_plus/share_plus.dart';
+import '../../main.dart';
 import '../showmessage/show_message.dart';
 
 String dontimageicon = 'assets/images/link.png';
@@ -26,6 +27,7 @@ class Linkcard extends StatelessWidget {
           SlidableDelete(
             title: title,
             id: id,
+            refFireBase: FirebaseFirestore.instance.collection('Link').doc(emaill).collection('Link'),
           )
         ],
       ),
@@ -233,14 +235,15 @@ class SlidableShare extends StatelessWidget {
 
 // ignore: must_be_immutable
 class SlidableDelete extends StatelessWidget {
-  SlidableDelete({
+  const SlidableDelete({
     super.key,
     required this.title,
     required this.id,
+    required this.refFireBase,
   });
   final String title;
   final String id;
-  var refFireBase = FirebaseFirestore.instance.collection('Link').doc('hamza@gmail.com').collection('Link');
+  final CollectionReference refFireBase;
 
   @override
   Widget build(BuildContext context) {

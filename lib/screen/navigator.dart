@@ -49,7 +49,7 @@ class _NavigatorBarState extends State<NavigatorBar> {
                 buildRotatedTextRailDestinations('Linkler', padding),
                 buildRotatedTextRailDestinations("Link Kayit", padding),
                 buildRotatedTextRailDestinations("Profil", padding),
-                buildRotatedTextRailDestinations("Gruplar", padding),
+                buildRotatedTextRailDestinations("Grup kayit", padding),
               ],
             ),
             Expanded(child: buildPages()),

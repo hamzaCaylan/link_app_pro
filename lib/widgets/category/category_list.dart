@@ -84,6 +84,13 @@ class CategoryScrollview extends StatelessWidget {
               );
             },
           ),
+          const VerticalDivider(
+            color: CategoryColors.midasFingerGold, //color of divider
+            width: 2, //width space of divider
+            thickness: 0.5, //thickness of divier line
+            indent: 10, //Spacing at the top of divider.
+            endIndent: 10, //Spacing at the bottom of divider.
+          ),
           for (int i = 0; i < categorysdata.length; i++) CategoryCard(categorysdata: categorysdata[i]),
         ],
       ),
