@@ -28,6 +28,8 @@ class CategoryCard extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) => LinkListDetail(
                   category: categorysdata.names,
+                  id: '',
+                  ref: false,
                 ),
               ),
             );

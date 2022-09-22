@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import '../constants.dart';
-import '../widgets/add_group_category/group_add/test.dart';
+import '../widgets/add_group_category/group_add/group_add_page.dart';
 import 'homepage.dart';
 import 'profile.dart';
 import 'save_page.dart';
@@ -105,7 +105,7 @@ class _NavigatorBarState extends State<NavigatorBar> {
       case 2:
         return const MyPages(body: Profile()); //Profil();
       case 3:
-        return const MyPages(body: Test());
+        return const MyPages(body: GroupAddPage());
     }
   }
 }

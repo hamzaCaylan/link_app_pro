@@ -174,8 +174,8 @@ class UrlContainer extends StatelessWidget {
               "Link Image": linkImage,
             };
             //CollectionReference collectionReference = FirebaseFirestore.instance.collection('Doc-MAK').doc('$email').collection('yayin').doc('$yayinturu').collection('$yayinalan');collectionReference.add(demoData);
-            CollectionReference collectionReference = FirebaseFirestore.instance.collection('Link').doc('hamza@gmail.com').collection('Link');
-            // CollectionReference collectionReference = FirebaseFirestore.instance.collection('Link').doc('emaill').collection('Link');
+            //CollectionReference collectionReference = FirebaseFirestore.instance.collection('Link').doc('hamza@gmail.com').collection('Link');
+            CollectionReference collectionReference = FirebaseFirestore.instance.collection('Grup').doc('5h7ChuTG2ALYuehNAYe8').collection('Link');
             collectionReference.add(demoData);
             showDialog(
                 context: context,

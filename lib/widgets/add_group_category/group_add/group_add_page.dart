@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../../../main.dart';
 import '../../button/my_button.dart';
 import '../../category/category_constants.dart';
 
@@ -54,7 +55,7 @@ class GroupAddPage extends StatelessWidget {
                   'Group title': groupyName.text.toString(),
                   'id': id,
                 };
-                CollectionReference collectionReference = FirebaseFirestore.instance.collection('Link').doc('hamza@gmail.com').collection('Grup');
+                CollectionReference collectionReference = FirebaseFirestore.instance.collection('Link').doc(emaill).collection('Grup');
                 collectionReference.add(demoData);
                 //Navigator.pop(context);
               },

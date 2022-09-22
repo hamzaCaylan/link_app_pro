@@ -2,8 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+import '../../../main.dart';
 import '../../category/category_constants.dart';
 import '../../link_listview/link_list_home.dart';
+import '../../link_listview/link_listview.dart';
 import '../../linkcard/linkcard.dart';
 
 class GroupList extends StatefulWidget {
@@ -14,9 +16,9 @@ class GroupList extends StatefulWidget {
 }
 
 class _GroupListState extends State<GroupList> {
-  var refFireBase = FirebaseFirestore.instance.collection('Grup').where("id", isEqualTo: 'iC938cHR3HEqEHih3wey');
-  // ignore: prefer_typing_uninitialized_variables
-  var id;
+  //var refFireBase = FirebaseFirestore.instance.collection('Grup').where("id", isEqualTo: '5h7ChuTG2ALYuehNAYe8');
+  var refFireBase = FirebaseFirestore.instance.collection('Link').doc(emaill).collection('Grup');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,51 +47,65 @@ class _GroupListState extends State<GroupList> {
                       itemBuilder: (context, index) {
                         var group = snapshot.data?.docs[index];
                         var grouptitle = group!['Group title'].toString();
-                        id = group['id'].toString();
-                        return Slidable(
-                          key: UniqueKey(),
-                          startActionPane: ActionPane(
-                            motion: const DrawerMotion(),
-                            children: [
-                              SlidableDelete(
-                                title: 'title',
-                                id: 'id',
-                              )
-                            ],
-                          ),
-                          endActionPane: ActionPane(
-                            motion: const DrawerMotion(),
-                            children: [
-                              SlidableShare(
-                                title: id,
+                        var id = group['id'].toString();
+                        return InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => LinkListDetail(
+                                  category: grouptitle,
+                                  ref: true,
+                                  id: id,
+                                ),
                               ),
-                            ],
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: CategoryColors.opicswallowBlue,
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              width: MediaQuery.of(context).size.width, //double.infinity,
-                              height: 150,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const DontImageCart(
-                                      iconrepead: true,
-                                      title: 'Varsayilan ikon',
-                                    ),
-                                    Linkcarttitle(title: grouptitle),
-                                    const SizedBox(
-                                      height: 4,
-                                    ),
-                                    Linkcarturl(url: 'Grup ID ' + id),
-                                  ],
+                            );
+                          },
+                          child: Slidable(
+                            key: UniqueKey(),
+                            startActionPane: ActionPane(
+                              motion: const DrawerMotion(),
+                              children: [
+                                SlidableDelete(
+                                  title: 'title',
+                                  id: 'id',
+                                )
+                              ],
+                            ),
+                            endActionPane: ActionPane(
+                              motion: const DrawerMotion(),
+                              children: [
+                                SlidableShare(
+                                  title: id,
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: CategoryColors.opicswallowBlue,
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                                width: MediaQuery.of(context).size.width, //double.infinity,
+                                height: 150,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 10),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const DontImageCart(
+                                        iconrepead: true,
+                                        title: 'Varsayilan ikon',
+                                      ),
+                                      Linkcarttitle(title: grouptitle),
+                                      const SizedBox(
+                                        height: 4,
+                                      ),
+                                      // ignore: prefer_interpolation_to_compose_strings
+                                      Linkcarturl(url: 'Grup ID: ' + id),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

@@ -9,6 +9,7 @@ void main() async {
 }
 
 String images = 'https://picsum.photos/seed/picsum/450/300';
+String emaill = 'hamza@gmail.com';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

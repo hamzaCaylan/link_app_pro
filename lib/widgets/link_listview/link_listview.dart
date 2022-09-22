@@ -2,18 +2,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import '../../constants.dart';
+import '../../main.dart';
 import '../linkcard/linkcard.dart';
 
 class LinkListDetail extends StatefulWidget {
-  const LinkListDetail({Key? key, required this.category}) : super(key: key);
+  const LinkListDetail({Key? key, required this.category, required this.ref, required this.id}) : super(key: key);
   final String category;
+  final bool ref;
+  final String id;
 
   @override
   State<LinkListDetail> createState() => _LinkListDetailState();
 }
 
 class _LinkListDetailState extends State<LinkListDetail> {
-  final String emaill = 'hamza@gmail.com';
   bool searchSee = false;
   String title = '*';
   TextEditingController titleController = TextEditingController();
@@ -44,22 +46,28 @@ class _LinkListDetailState extends State<LinkListDetail> {
               decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/00.webp'), fit: BoxFit.cover)),
             ),
             StreamBuilder(
-              //stream: FirebaseFirestore.instance.collection('Link').doc(emaill).collection('Link').snapshots(), //
-              //stream: FirebaseFirestore.instance.collection('Doc-MAK').doc("$emaill").collection('Yayınlar').where("Yayın Alanı",isEqualTo: baslik).snapshots(),
-
-              stream: searchSee == true
-                  ? FirebaseFirestore.instance
-                      .collection('Link')
-                      .doc(emaill)
-                      .collection('Link')
-                      .where("Link Baslik", isGreaterThanOrEqualTo: title)
-                      .snapshots()
-                  : FirebaseFirestore.instance
-                      .collection('Link')
-                      .doc(emaill)
-                      .collection('Link')
-                      .where("Link Kategori ", isEqualTo: widget.category)
-                      .snapshots(),
+              stream: widget.ref == true
+                  ? searchSee == true
+                      ? FirebaseFirestore.instance
+                          .collection('Grup')
+                          .doc(widget.id)
+                          .collection('Link')
+                          .where("Link Baslik", isGreaterThanOrEqualTo: title)
+                          .snapshots()
+                      : FirebaseFirestore.instance.collection('Grup').doc(widget.id).collection('Link').snapshots()
+                  : searchSee == true
+                      ? FirebaseFirestore.instance
+                          .collection('Link')
+                          .doc(emaill)
+                          .collection('Link')
+                          .where("Link Baslik", isGreaterThanOrEqualTo: title)
+                          .snapshots()
+                      : FirebaseFirestore.instance
+                          .collection('Link')
+                          .doc(emaill)
+                          .collection('Link')
+                          .where("Link Kategori ", isEqualTo: widget.category)
+                          .snapshots(),
               builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasData) {
                   // ignore: prefer_is_empty
@@ -131,7 +139,7 @@ class LoadingSpace extends StatelessWidget {
           height: 300,
           width: MediaQuery.of(context).size.width,
           child: Lottie.asset(
-            'assets/lotties/space0.json',
+            'assets/lotties/space.json',
             repeat: true,
           ),
         ),
