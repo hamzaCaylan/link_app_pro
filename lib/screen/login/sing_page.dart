@@ -167,9 +167,9 @@ class SingPage extends StatelessWidget {
                           collectionReference.add(demoData);
                         }
                       } catch (e) {
+                        // ignore: avoid_print
                         print(e);
                       }
-                      print(" K A Y I T 2");
                       showDialog(
                           context: context,
                           barrierDismissible: false,
@@ -261,7 +261,7 @@ class SingPage extends StatelessWidget {
                                       onPressed: () {
                                         Navigator.pop(context);
                                       },
-                                      child: Text(
+                                      child: const Text(
                                         'Tamam',
                                         style: TextStyle(color: MyCustomerColors.benthicBlack, fontSize: 20),
                                       )),
@@ -278,9 +278,9 @@ class SingPage extends StatelessWidget {
                                   width: 300,
                                   color: MyCustomerColors.zhebZhuBaiPearl,
                                   child: Column(
-                                    children: <Widget>[
+                                    children: const <Widget>[
                                       Padding(
-                                        padding: const EdgeInsets.all(8.0),
+                                        padding: EdgeInsets.all(8.0),
                                         child: Icon(
                                           Icons.close,
                                           color: MyCustomerColors.benthicBlack,
@@ -288,7 +288,7 @@ class SingPage extends StatelessWidget {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.all(4.0),
+                                        padding: EdgeInsets.all(4.0),
                                         child: Text(
                                           "Kayıt talebi başarısız",
                                           style: TextStyle(color: MyCustomerColors.benthicBlack, fontSize: 17),
@@ -307,7 +307,7 @@ class SingPage extends StatelessWidget {
                                       onPressed: () {
                                         Navigator.pop(context);
                                       },
-                                      child: Text(
+                                      child: const Text(
                                         'Tekrar Dene',
                                         style: TextStyle(color: MyCustomerColors.benthicBlack, fontSize: 20),
                                       )),

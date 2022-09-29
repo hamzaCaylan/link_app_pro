@@ -46,10 +46,14 @@ class _NavigatorBarState extends State<NavigatorBar> {
               selectedLabelTextStyle: selecttextstyle(),
               unselectedLabelTextStyle: unselecttextstyle(),
               destinations: [
-                buildRotatedTextRailDestinations('Linkler', padding),
-                buildRotatedTextRailDestinations("Link Kayit", padding),
-                buildRotatedTextRailDestinations("Profil", padding),
-                buildRotatedTextRailDestinations("Grup kayit", padding),
+                const NavigationRailDestination(
+                  icon: SizedBox.shrink(),
+                  label: Icon(Icons.workspaces, color: Colors.amber),
+                ),
+                buildRotatedTextRailDestinations('Linkler', padding, const SizedBox.shrink()),
+                buildRotatedTextRailDestinations("Link Kayit", padding, const SizedBox.shrink()),
+                buildRotatedTextRailDestinations("Grup kayit", padding, const SizedBox.shrink()),
+                buildRotatedTextRailDestinations("Profil", padding, const SizedBox.shrink()),
               ],
             ),
             Expanded(child: buildPages()),
@@ -79,9 +83,9 @@ class _NavigatorBarState extends State<NavigatorBar> {
     );
   }
 
-  NavigationRailDestination buildRotatedTextRailDestinations(String text, double padding) {
+  NavigationRailDestination buildRotatedTextRailDestinations(String text, double padding, Widget icon) {
     return NavigationRailDestination(
-      icon: const SizedBox.shrink(),
+      icon: icon,
       label: RotatedBox(
           quarterTurns: -1,
           child: Stack(
@@ -103,9 +107,11 @@ class _NavigatorBarState extends State<NavigatorBar> {
       case 1:
         return const MyPages(body: SavePage()); //SavePage();
       case 2:
-        return const MyPages(body: Profile()); //Profil();
-      case 3:
         return const MyPages(body: GroupAddPage());
+      case 3:
+        return const MyPages(body: Profile());
+      case 4:
+        return const MyPages(body: SizedBox()); //Profil();
     }
   }
 }

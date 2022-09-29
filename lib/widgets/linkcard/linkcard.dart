@@ -105,10 +105,12 @@ class Linkcarturl extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
         child: Padding(
-      padding: const EdgeInsets.only(left: 10),
+      padding: const EdgeInsets.only(
+        left: 10,
+      ),
       child: Text(
         url,
-        style: const TextStyle(color: MyCustomerColors.zhebZhuBaiPearl, fontSize: 13),
+        style: const TextStyle(color: MyCustomerColors.zhebZhuBaiPearl, fontSize: 12),
       ),
     ));
   }
@@ -126,10 +128,13 @@ class Linkcarttitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
         child: Padding(
-      padding: const EdgeInsets.only(left: 10),
+      padding: const EdgeInsets.only(
+        left: 10,
+        top: 2,
+      ),
       child: Text(
         title,
-        style: const TextStyle(color: MyCustomerColors.midasFingerGold, fontSize: 16),
+        style: const TextStyle(color: MyCustomerColors.midasFingerGold, fontSize: 15),
       ),
     ));
   }

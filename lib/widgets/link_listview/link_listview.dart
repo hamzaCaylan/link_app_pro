@@ -38,6 +38,16 @@ class _LinkListDetailState extends State<LinkListDetail> {
               )),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: MyCustomerColors.midasFingerGold,
+        child: const Icon(
+          Icons.add,
+          color: MyCustomerColors.swallowBlue,
+          size: 36,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Container(
         color: MyCustomerColors.deepWater,
         child: Stack(

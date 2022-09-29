@@ -28,30 +28,108 @@ class _DropDownButtonState extends State<DropDownButton> {
     'Proje 4',
     'Proje 5',
   ];
+  String title = 'Grup Adi';
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: dropbuttondecor(),
-      width: 330,
-      height: 50,
-      margin: dropbuttonpadding(),
-      child: Padding(
-        padding: dropbuttonpadding(),
-        child: DropdownButton<String>(
-          value: value,
-          dropdownColor: DropDownButtonColors.black87,
-          hint: Text(
-            'Link Katagori',
-            style: dropbuttontextstyle(),
+    return Column(
+      children: [
+        /* dropDownStyle(
+          StreamBuilder<QuerySnapshot>(
+            stream: FirebaseFirestore.instance.collection('Link').doc(emaill).collection('Grup').snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return const Center(
+                  child: Text('data yok'),
+                );
+              }
+              return Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 4,
+                    child: DropdownButton(
+                      dropdownColor: DropDownButtonColors.black87,
+                      hint: Text(
+                        title,
+                        style: const TextStyle(color: DropDownButtonColors.midasFingerGold, fontSize: 14),
+                      ),
+                      iconSize: 36,
+                      icon: const DropButtonIcon(),
+                      isExpanded: true,
+                      value: _category,
+                      isDense: true,
+                      onChanged: (newValue) {
+                        setState(() {
+                          _category = newValue!;
+                          title = _category;
+                        });
+                      },
+                      items: snapshot.data!.docs.map(
+                        (DocumentSnapshot document) {
+                          return DropdownMenuItem<String>(
+                            value: document['Group title'],
+                            child: Text(
+                              document['Group title'],
+                              style: const TextStyle(color: DropDownButtonColors.midasFingerGold, fontSize: 14),
+                            ),
+                          );
+                        },
+                      ).toList(),
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
-          iconSize: 36,
-          icon: const DropButtonIcon(),
-          isExpanded: true,
-          items: items.map(buildMenuItem).toList(),
-          onChanged: (value) => setState(() {
-            this.value = value;
-            linkcatagory = value;
-          }),
+        ),*/
+        const SizedBox(
+          height: 5,
+        ),
+        dropDownStyle(
+          DropdownButton<String>(
+            value: value,
+            dropdownColor: DropDownButtonColors.black87,
+            hint: Text(
+              'Link Katagori',
+              style: dropbuttontextstyle(),
+            ),
+            iconSize: 36,
+            icon: const DropButtonIcon(),
+            isExpanded: true,
+            items: items.map(buildMenuItem).toList(),
+            onChanged: (value) => setState(() {
+              this.value = value;
+              linkcatagory = value;
+            }),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Padding dropDownStyle(Widget child) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 10, right: 10),
+      child: Container(
+        decoration: const BoxDecoration(
+          color: DropDownButtonColors.deepWater,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10.0),
+            bottomLeft: Radius.circular(10.0),
+            bottomRight: Radius.circular(10.0),
+            topRight: Radius.circular(10.0),
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(1.0),
+          child: Container(
+            decoration: dropbuttondecor(),
+            width: 330,
+            height: 50,
+            child: Padding(
+              padding: dropbuttonpadding(),
+              child: child,
+            ),
+          ),
         ),
       ),
     );
@@ -65,9 +143,14 @@ class _DropDownButtonState extends State<DropDownButton> {
 
   BoxDecoration dropbuttondecor() {
     return const BoxDecoration(
-        color: DropDownButtonColors.benthicBlack,
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10.0), bottomLeft: Radius.circular(10.0), bottomRight: Radius.circular(10.0), topRight: Radius.circular(10.0)));
+      color: DropDownButtonColors.benthicBlack,
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(10.0),
+        bottomLeft: Radius.circular(10.0),
+        bottomRight: Radius.circular(10.0),
+        topRight: Radius.circular(10.0),
+      ),
+    );
   }
 
   DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(

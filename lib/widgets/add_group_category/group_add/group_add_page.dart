@@ -1,7 +1,10 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../../main.dart';
+import '../../../screen/save_page.dart';
 import '../../button/my_button.dart';
 import '../../category/category_constants.dart';
 import '../../linkcard/linkcard.dart';
@@ -10,7 +13,6 @@ final TextEditingController groupyName = TextEditingController();
 
 class GroupAddPage extends StatefulWidget {
   const GroupAddPage({Key? key}) : super(key: key);
-
   @override
   State<GroupAddPage> createState() => _GroupAddPageState();
 }
@@ -18,7 +20,6 @@ class GroupAddPage extends StatefulWidget {
 class _GroupAddPageState extends State<GroupAddPage> {
   bool open = false;
   late String groupTitle;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,11 +40,61 @@ class _GroupAddPageState extends State<GroupAddPage> {
                   color: CategoryColors.opicswallowBlue,
                   borderRadius: BorderRadius.circular(15.0),
                 ),
-                height: 120,
+                height: 240,
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    RadioListTile(
+                      activeColor: CategoryColors.midasFingerGold,
+                      title: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Grup link kaydet',
+                            style: TextStyle(color: CategoryColors.midasFingerGold, fontSize: 16),
+                          ),
+                          Text(
+                            "Grup link ",
+                            style: TextStyle(color: CategoryColors.zhebZhuBaiPearl.withOpacity(0.9), fontSize: 13),
+                          ),
+                        ],
+                      ),
+                      value: "Grup link kayit",
+                      groupValue: gender,
+                      onChanged: (value) {
+                        setState(
+                          () {
+                            gender = value.toString();
+                          },
+                        );
+                      },
+                    ),
+                    RadioListTile(
+                      activeColor: CategoryColors.midasFingerGold,
+                      title: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Categori link kayit',
+                            style: TextStyle(color: CategoryColors.midasFingerGold, fontSize: 16),
+                          ),
+                          Text(
+                            "Kategoriye link kaydet",
+                            style: TextStyle(color: CategoryColors.zhebZhuBaiPearl.withOpacity(0.9), fontSize: 13),
+                          ),
+                        ],
+                      ),
+                      value: "Categori link kayit",
+                      groupValue: gender,
+                      onChanged: (value) {
+                        setState(
+                          () {
+                            gender = value.toString();
+                          },
+                        );
+                      },
+                    ),
                     RadioListTile(
                       activeColor: CategoryColors.midasFingerGold,
                       title: Column(
@@ -100,6 +151,7 @@ class _GroupAddPageState extends State<GroupAddPage> {
             ),
             gender != 'Grup Olustur' ? const SizedBox() : groupOlustur(),
             gender != 'Gruba Katıl' ? const SizedBox() : groupKatil(),
+            gender != 'Categori link kayit' ? const SizedBox() : const SavePage(),
             const Spacer(
               flex: 10,
             ),
@@ -203,13 +255,6 @@ class _GroupAddPageState extends State<GroupAddPage> {
                   setState(() {
                     open = true;
                   });
-                  /* Map<String, dynamic> demoData = {
-              'Group title': groupyName.text.toString(),
-              'id': groupyName.text.toString(),
-            };
-            CollectionReference collectionReference = FirebaseFirestore.instance.collection('Link').doc(emaill).collection('Grup');
-            collectionReference.add(demoData);
-            //Navigator.pop(context);*/
                 },
                 buttonColor: Colors.black,
                 buttonIcon: const Icon(
@@ -235,64 +280,51 @@ class _GroupAddPageState extends State<GroupAddPage> {
               ),
         open == false
             ? const SizedBox()
-            : SizedBox(
-                height: 190,
-                child: StreamBuilder(
-                  stream: FirebaseFirestore.instance.collection('Grup').where("id", isEqualTo: groupyName.text.toString()).snapshots(), //
-                  builder: (_, AsyncSnapshot<QuerySnapshot> snapshot) {
-                    if (snapshot.hasData) {
-                      // ignore: prefer_is_empty
-                      if (snapshot.data?.docs.length == 0) {
-                        return const SizedBox();
-                      } else {
-                        return ListView.builder(
-                          //  scrollDirection: Axis.horizontal,
-                          itemCount: snapshot.data?.docs.length,
-                          itemBuilder: (context, index) {
-                            var group = snapshot.data?.docs[index];
-                            var grouptitle = group!['Group title'].toString();
-                            var id = group['id'].toString();
-                            groupTitle = grouptitle;
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: CategoryColors.opicswallowBlue,
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                width: MediaQuery.of(context).size.width, //double.infinity,
-                                height: 150,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 10),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const DontImageCart(
-                                        iconrepead: true,
-                                        title: 'Varsayilan ikon',
-                                      ),
-                                      Linkcarttitle(title: grouptitle),
-                                      const SizedBox(
-                                        height: 4,
-                                      ),
-                                      // ignore: prefer_interpolation_to_compose_strings
-                                      Linkcarturl(url: 'Grup ID: ' + id),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
-                            //
-                          },
-                        );
-                      }
-                    } else {
-                      return const Text('Grup Yok');
-                    }
-                  },
-                ),
-              ),
+            : StreamBuilder<QuerySnapshot>(
+                stream: FirebaseFirestore.instance.collection('Grup').where("id", isEqualTo: groupyName.text).snapshots(),
+                builder: (context, snapshot) {
+                  var group = snapshot.data?.docs[0];
+                  var grouptitle = '';
+                  var id = '';
+                  group != null ? grouptitle = group['Group title'].toString() : grouptitle == '';
+                  group != null ? id = group['id'].toString() : id == '';
+                  groupTitle = grouptitle;
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: Text('data yok'),
+                    );
+                  }
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: CategoryColors.opicswallowBlue,
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      width: MediaQuery.of(context).size.width, //double.infinity,
+                      height: 150,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const DontImageCart(
+                              iconrepead: true,
+                              title: 'Varsayilan ikon',
+                            ),
+                            Linkcarttitle(title: grouptitle),
+                            const SizedBox(
+                              height: 4,
+                            ),
+                            // ignore: prefer_interpolation_to_compose_strings
+                            Linkcarturl(url: 'Grup ID: ' + id),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }),
         open == false
             ? const SizedBox()
             : MyButton(
