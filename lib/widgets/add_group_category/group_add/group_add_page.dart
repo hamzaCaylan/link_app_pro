@@ -40,61 +40,11 @@ class _GroupAddPageState extends State<GroupAddPage> {
                   color: CategoryColors.opicswallowBlue,
                   borderRadius: BorderRadius.circular(15.0),
                 ),
-                height: 240,
+                height: 120,
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    RadioListTile(
-                      activeColor: CategoryColors.midasFingerGold,
-                      title: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Grup link kaydet',
-                            style: TextStyle(color: CategoryColors.midasFingerGold, fontSize: 16),
-                          ),
-                          Text(
-                            "Grup link ",
-                            style: TextStyle(color: CategoryColors.zhebZhuBaiPearl.withOpacity(0.9), fontSize: 13),
-                          ),
-                        ],
-                      ),
-                      value: "Grup link kayit",
-                      groupValue: gender,
-                      onChanged: (value) {
-                        setState(
-                          () {
-                            gender = value.toString();
-                          },
-                        );
-                      },
-                    ),
-                    RadioListTile(
-                      activeColor: CategoryColors.midasFingerGold,
-                      title: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Categori link kayit',
-                            style: TextStyle(color: CategoryColors.midasFingerGold, fontSize: 16),
-                          ),
-                          Text(
-                            "Kategoriye link kaydet",
-                            style: TextStyle(color: CategoryColors.zhebZhuBaiPearl.withOpacity(0.9), fontSize: 13),
-                          ),
-                        ],
-                      ),
-                      value: "Categori link kayit",
-                      groupValue: gender,
-                      onChanged: (value) {
-                        setState(
-                          () {
-                            gender = value.toString();
-                          },
-                        );
-                      },
-                    ),
                     RadioListTile(
                       activeColor: CategoryColors.midasFingerGold,
                       title: Column(

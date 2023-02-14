@@ -101,17 +101,18 @@ class _NavigatorBarState extends State<NavigatorBar> {
   buildPages() {
     switch (indext) {
       case 0:
+        return const MyPages(body: MyHomePage());
+      case 1:
         return const MyPages(
           body: MyHomePage(),
         ); //MyHomePage();
-      case 1:
-        return const MyPages(body: SavePage()); //SavePage();
       case 2:
-        return const MyPages(body: GroupAddPage());
+        return const MyPages(body: SavePage()); //SavePage();
       case 3:
-        return const MyPages(body: Profile());
+        return const MyPages(body: GroupAddPage());
       case 4:
-        return const MyPages(body: SizedBox()); //Profil();
+        return const MyPages(body: Profile());
+      //Profil();
     }
   }
 }

@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+
 import '../../constants.dart';
 import '../../main.dart';
+import '../../screen/save_page.dart';
 import '../linkcard/linkcard.dart';
 
 class LinkListDetail extends StatefulWidget {
@@ -39,7 +41,15 @@ class _LinkListDetailState extends State<LinkListDetail> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (contex) => GroupAddLink(
+              id: widget.id,
+              category: widget.category,
+            ),
+          );
+        },
         backgroundColor: MyCustomerColors.midasFingerGold,
         child: const Icon(
           Icons.add,
@@ -47,7 +57,6 @@ class _LinkListDetailState extends State<LinkListDetail> {
           size: 36,
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Container(
         color: MyCustomerColors.deepWater,
         child: Stack(

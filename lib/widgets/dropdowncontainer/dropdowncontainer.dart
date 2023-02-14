@@ -6,13 +6,20 @@ import '../showmessage/show_message.dart';
 
 class UrlContainer extends StatelessWidget {
   const UrlContainer(
-      {Key? key, required this.linkBaslik, required this.linkURL, required this.linAciklama, required this.linkImage, required this.linkCatagory})
+      {Key? key,
+      required this.linkBaslik,
+      required this.linkURL,
+      required this.linAciklama,
+      required this.linkImage,
+      required this.linkCatagory,
+      required this.id})
       : super(key: key);
   final String linkBaslik;
   final String linkURL;
   final String linAciklama;
   final String linkImage;
   final String linkCatagory;
+  final String id;
 
   @override
   Widget build(BuildContext context) {
@@ -175,8 +182,9 @@ class UrlContainer extends StatelessWidget {
             };
             //CollectionReference collectionReference = FirebaseFirestore.instance.collection('Doc-MAK').doc('$email').collection('yayin').doc('$yayinturu').collection('$yayinalan');collectionReference.add(demoData);
             //CollectionReference collectionReference = FirebaseFirestore.instance.collection('Link').doc('hamza@gmail.com').collection('Link');
-            CollectionReference collectionReference = FirebaseFirestore.instance.collection('Grup').doc('5h7ChuTG2ALYuehNAYe8').collection('Link');
+            CollectionReference collectionReference = FirebaseFirestore.instance.collection('Grup').doc(id).collection('Link');
             collectionReference.add(demoData);
+            Navigator.pop(context);
             showDialog(
                 context: context,
                 builder: (context) => MyAlertWidget(

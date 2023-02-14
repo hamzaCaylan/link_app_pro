@@ -10,13 +10,6 @@ final TextEditingController linkURLController = TextEditingController();
 final TextEditingController linkAciklmamaController = TextEditingController();
 final TextEditingController linkCatagoryController = TextEditingController();
 
-class SavePage extends StatefulWidget {
-  const SavePage({Key? key}) : super(key: key);
-  @override
-  // ignore: library_private_types_in_public_api
-  _SavePageState createState() => _SavePageState();
-}
-
 String? linkBaslik = '';
 // ignore: non_constant_identifier_names, prefer_typing_uninitialized_variables
 var _LinkURL;
@@ -24,6 +17,13 @@ var _LinkURL;
 String? linkAciklmama = '';
 // ignore: prefer_typing_uninitialized_variables
 String? linkImage = '';
+
+class SavePage extends StatefulWidget {
+  const SavePage({Key? key}) : super(key: key);
+  @override
+  // ignore: library_private_types_in_public_api
+  _SavePageState createState() => _SavePageState();
+}
 
 class _SavePageState extends State<SavePage> {
   @override
@@ -79,6 +79,7 @@ class _SavePageState extends State<SavePage> {
                     linkURL: _LinkURL.toString(),
                     linkCatagory: linkcatagory.toString(),
                     linAciklama: linkAciklmama.toString(),
+                    id: '',
                   ),
           ],
         ),
@@ -160,6 +161,73 @@ class SaveTextField extends StatelessWidget {
           data?.description == null ? linkAciklmama = 'Veri Yok' : linkAciklmama = data?.description;
           data?.image == null ? linkImage = 'Veri Yok' : linkImage = data?.image;
         },
+      ),
+    );
+  }
+}
+
+class GroupAddLink extends StatefulWidget {
+  const GroupAddLink({Key? key, required this.id, required this.category}) : super(key: key);
+  final String id;
+  final String category;
+
+  @override
+  State<GroupAddLink> createState() => _GroupAddLinkState();
+}
+
+class _GroupAddLinkState extends State<GroupAddLink> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black87,
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: linkImage == null || linkImage == '' ? 750 : 900,
+        color: Colors.black12,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            MyButton(
+              title: 'Verileri Temizle',
+              buttonIcon: const Icon(Icons.clear_all_rounded, size: 24.0, color: MyCustomerColors.midasFingerGold),
+              buttonColor: MyCustomerColors.benthicBlack,
+              onPress: () {
+                setState(() {
+                  linkBaslik = '';
+                  linkAciklmama = '';
+                  linkImage = '';
+                  _LinkURL = '';
+                  linkURLController.text = '';
+                });
+              },
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            const SaveTextField(),
+            linkBaslik != ''
+                ? const SizedBox()
+                : MyButton(
+                    title: 'Link`i Ara',
+                    buttonIcon: const Icon(Icons.search, size: 24.0, color: MyCustomerColors.midasFingerGold),
+                    buttonColor: MyCustomerColors.benthicBlack,
+                    onPress: () {
+                      setState(() {});
+                    },
+                  ),
+            linkBaslik == ''
+                ? const SizedBox()
+                : UrlContainer(
+                    linkBaslik: linkBaslik.toString(),
+                    linkImage: linkImage.toString(),
+                    linkURL: _LinkURL.toString(),
+                    linkCatagory: widget.category,
+                    linAciklama: linkAciklmama.toString(),
+                    id: widget.id,
+                  ),
+          ],
+        ),
       ),
     );
   }
